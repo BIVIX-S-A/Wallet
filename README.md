@@ -1,2 +1,2 @@
 # Wallet
-Yhis will be the main repository of the virtual wallet BIVIX
+This will be the main repository of the virtual wallet BIVIX
