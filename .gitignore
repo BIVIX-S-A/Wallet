@@ -1,0 +1,10 @@
+Gemfile.lock
+/vendor/
+.bundle/
+*.log
+*.tmp
+*.bak
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
