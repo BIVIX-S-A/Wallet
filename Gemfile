@@ -1,7 +1,4 @@
-# frozen_string_literal: true
+source 'https://rubygems.org'
 
-source "https://rubygems.org"
-
-# gem 'rails', <version>
-
-gem 'sinatra'
+gem 'sinatra', '~> 4.1'
+gem 'rack', '~> 3.0'
