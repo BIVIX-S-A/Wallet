@@ -9,3 +9,4 @@ Gemfile.lock
 .DS_Store
 Thumbs.db
 .NetrwMessage.swp
+*.swp
