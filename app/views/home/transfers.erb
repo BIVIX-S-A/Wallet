@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet", href="/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <title>Transfers</title>
+</head>
+<body>
+
+    <header>
+         <h3 id="transfers-title">TRANSFER</h3>
+    </header>
+
+    <p class="explanation-transfer">Enter the amount</p>
+    <div class="transfer-form-container">
+        <form method="post" id="transfer-form" action="/transfer-success">
+            
+            <div class ="container-transfer">
+                <div id = "amount-input"> 
+                    <label for="amount">Total</label>
+                    <input type="number" id="amount" name="amount" placeholder="$0.00">
+                </div>
+    
+                <div id ="balance-transfer">
+                    <% @balance = 500.00 %> <%# Testing variable %>
+                    <p id= "balance-transfer-amount">Balance: $<%= sprintf('%.2f', @balance) %></p>
+                </div>    
+            </div>
+            
+            <div id="debit-contactBook" class="contact-book" >
+                <label for="debitAccount-select">Debit Account</label> 
+                <a href="/select-contact" class="button-link">Select</a>
+            </div>
+    
+            <div id="credit-contactBook" class="contact-book" >
+                <label for="creditAccount-select">Credit Account</label> 
+                <a href="/select-contact" class="button-link">Select</a>
+            </div>
+
+
+              <div id="category-transfer" class="category-transfers" >
+                <label for="category-select">Category</label> 
+                <a href="/select-category" class="button-link">Select</a>     
+            </div>
+            
+            <div class="submit-button-transfer">
+                <input type="submit" id="transfer-submit" value="Transfer">
+            </div>
+        
+        </form>
+    </div>
+</body>
+</html>
