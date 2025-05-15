@@ -18,4 +18,8 @@ class App < Sinatra::Application
   get '/transfers' do
     erb :'home/transfers'
   end
+
+  get '/register' do
+    erb :'home/register'
+  end
 end

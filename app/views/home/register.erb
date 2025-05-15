@@ -7,30 +7,29 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-    <title>Log in</title>
+    <title>Register</title>
 </head>
 <body>
     <header>
         <img src="/assets/unnamed-logo.png" alt="logo" id="bivix-logo">
         <h1 id="bivix-name">BIVIX</h1>
     </header>
-    <p class="explanation">Log in to your account</p>
+    <p class="explanation">Create your new account</p>
+    <p class="guide">Enter your email to sign up for this app</p>
     <div class="form-container">
         <form method="get" id="login-form">
             <label for="login-email">
                 <input type="email" id="login-email" placeholder="youremail@example.com" name="login-form">
             </label>
-            <label for="login-password">
-                <input type="password" id="login-password" placeholder="Enter your password" name="login-password">
-            </label>
             <label for="login-submit">
                 <input type="submit" id="login-submit" value="Continue" name="login-submit">
             </label>
+            <p class="terms-conditions">
+                By clicking continue, you agree to our 
+                <a href="#">Terms of Service</a> and 
+                <a href="#">Privacy Policy</a>
+            </p>
         </form>
-        <div class="small-divider">or</div>
-        <label for="create-account">
-            <a class="create-account" href="/register" name="create-account">Create an account</a>
-        </label>
     </div>
 </body>
 </html>
