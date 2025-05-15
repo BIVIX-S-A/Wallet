@@ -1,5 +1,5 @@
 body {
-  font-family: sans-serif;
+  font-family: "Inter" sans-serif;
 }
 
 h1 {
@@ -165,6 +165,7 @@ input[type="email"] {
 
 .contact-book, .category-transfers{
     display: flex;
+    justify-content: center;
     align-items: center;
     gap: 10px;
     margin-top: 50px;
