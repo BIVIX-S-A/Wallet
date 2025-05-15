@@ -1,27 +1,18 @@
 body {
-  font-family: "Inter" sans-serif;
+  font-family: "Inter", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
 }
 
 h1 {
   color: #000000;
 }
-body{
-    font-family: "Inter", sans-serif;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  display: flex;   
-  align-items: center;       
-  min-height: 100vh;         
-  background-color: #f0f0f0;
-}
-
 
 header{
     display: flex;
@@ -101,6 +92,9 @@ header{
     width: 300px;
 }
 
+#login-submit:hover{
+    cursor: pointer;
+}
 
 #login-email {
     border: #E0E0E0 solid 2px;
@@ -112,8 +106,8 @@ header{
     width: 300px;
 }
 
-.create-account{
-    background-color: #eeeeee;
+#create-account{
+    background-color: #D9D6D6;
     border: 0;
     width: 300px;
     display: inline-block;
@@ -123,6 +117,10 @@ header{
     border-radius: 4px;
     text-decoration: none;
     font-weight: 600;
+}
+
+#create-account:hover{
+    cursor:pointer;
 }
 
 input[type="text"],
