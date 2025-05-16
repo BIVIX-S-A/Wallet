@@ -1,4 +1,8 @@
 require 'sinatra/activerecord'
+require_relative 'models/user'
+require_relative 'models/account'
+require_relative 'models/card'
+require_relative 'models/movement'
 require 'sinatra'
 require 'bundler/setup'
 require 'sinatra/reloader' if Sinatra::Base.environment == :development

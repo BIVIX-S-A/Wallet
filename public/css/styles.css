@@ -1,49 +1,42 @@
+/* Base styles */
 body {
-  font-family: "Inter" sans-serif;
+    font-family: "Inter", sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;   
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;         
+    background-color: #f0f0f0;
 }
 
 h1 {
-  color: #000000;
-}
-body{
-    font-family: "Inter", sans-serif;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    color: #000000;
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  display: flex;   
-  align-items: center;       
-  min-height: 100vh;         
-  background-color: #f0f0f0;
-}
-
-
-header{
+header {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 0;
     margin: 0;
+    text-align: center;
 }
 
-#bivix-name{
+#bivix-name {
     font-weight: bolder;
-    transform: translate(-20px,0);
+    margin-left: -20px;
 }
 
 #bivix-logo {
     width: 60px;
     height: 50px;
-    transform: translate(-20px,0);
+    margin-left: -20px;
 }
 
-.small-divider{
+.small-divider {
     display: flex;
     color: gray;
     align-items: center;
@@ -53,7 +46,7 @@ header{
 }
 
 .small-divider::before,
-.small-divider::after{
+.small-divider::after {
     content: "";
     flex: 1;
     height: 1px;
@@ -61,13 +54,12 @@ header{
     margin: 0 10px;
 }
 
-.explanation{
-    font-weight: 500;
+.explanation {
     font-weight: bold;
-    transform: translate(65px,0);
+    margin-left: 65px;
 }
 
-#login-form, .form-container{
+#login-form, .form-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -77,44 +69,42 @@ header{
     max-width: 300px;
 }
 
-.container-box{
-
-    transform: translate(30px,0);
-
+.container-box {
+    margin-left: 30px;
 }
 
-#login-submit{
-    background-color: #a294f9;
-    border: 10px;
-    width: 300px;
+#login-submit,
+#create-account {
+    width: 100%;
+    max-width: 300px;
     font-weight: bold;
 }
 
-.box-login{
-    width: 350px;
-    padding: 30px;
-    margin: 40px auto; 
+#login-submit {
+    background-color: #a294f9;
+    border: none;
+}
+
+#create-account {
+    background-color: #EEEEEE;
+    border: none;
+}
+
+.box-login {
+    width: 100%;
+    max-width: 400px;
+    padding: 10%;
+    margin: 5% auto; 
     background: transparent; 
     border: 2px solid #ccc; 
     border-radius: 12px;
-  
 }
 
-#login-email {
-    border: #E0E0E0 solid 2px;
-    width: 300px;
-}
-
+#login-email,
 #login-password {
     border: #E0E0E0 solid 2px;
-    width: 300px;
-}
-
-#create-account{
-    background-color: #EEEEEE;
-    border: 0;
-    width: 300px;
-    font-weight: bold;
+    width: 100%;
+    max-width: 300px;
 }
 
 input[type="text"],
@@ -127,35 +117,57 @@ input[type="email"] {
     box-sizing: border-box;
     border-radius: 4px;
 }
-.login-form{
-  display:flex;
-  justify-content: center;
-  align-items: center;
-}
 
-
-/* <-- Transfers Style --> */
-
-.submit-button-transfer{
-    display : flex;
+.login-form {
+    display: flex;
     justify-content: center;
     align-items: center;
 }
 
-#transfer-submit{
-    background-color: #a294f9;
-    border: 0;
-    width: 300px;
-    margin-top: 100px;
+/* Transfer styles */
+
+.explanation-transfer {
+    font-weight: bold;
+    text-align: center;
+    margin: 10px 0;
 }
 
-#amount-input{
+#transfers-title {
+    font-size: 24px;
+    color: #000;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.submit-button-transfer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#transfer-submit {
+    background-color: #a294f9;
+    border: none;
+    width: 100%;
+    max-width: 300px;
+    margin-top: 50px;
+}
+
+.transfer-form-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#amount-input {
     display: flex;
     flex-direction: column;
     align-items: center; 
     gap: 5px;
-    width: 100%; 
-   
+    width: 100%;
 }
 
 #amount-input label {
@@ -165,17 +177,31 @@ input[type="email"] {
     display: flex;
     align-items: center;
     flex-direction: column;
-  }
+    text-align: center;
+}
 
-#balance-transfer{
-    display:flex;
+#amount-input input {
+    margin-top: 10px;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 2px solid #a294f9;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s ease;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9ff;
+    color: #333;
+    width: 100%;
+}
+
+#balance-transfer {
+    display: flex;
     flex-direction: column;
-
     align-items: center;
     gap: 10px;
- ;
 }
-.button-link{
+
+.button-link {
     display: inline-block;
     padding: 8px 16px;
     background-color: #a294f9;
@@ -190,46 +216,68 @@ input[type="email"] {
 }
 
 .button-link:hover {
-    background-color: #8376f5;  
-  }
+    background-color: #8376f5;
+}
 
-.contact-book, .category-transfers{
+.contact-book,
+.category-transfers {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     gap: 10px;
-    margin-top: 50px;
+    margin-top: 30px;
 }
 
-.contact-book label, .category-transfers label {
-    width: 150px;
+.contact-book label,
+.category-transfers label {
+    width: 100%;
+    max-width: 150px;
     font-weight: 600;
-  }
-
-#amount-input input {
-  margin-top : 10px;
-  flex: 1;                
-  padding: 10px 15px;     
-  font-size: 16px;        
-  border: 2px solid #a294f9; 
-  border-radius: 8px;    
-  outline: none;         
-  transition: border-color 0.3s ease;
-  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1); 
-  background-color: #f9f9ff; 
-  color: #333;
+    text-align: center;
 }
 
-.container-transfer{
-    background-color: #f0eaff; 
-    padding: 20px;             
-    border-radius: 10px;       
-    width: 520px;             
-    flex-direction: column;
-    gap: 0px;                 
+.container-transfer {
+    background-color: #f0eaff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 520px;
     box-sizing: border-box;
 }
 
-input::placeholder {
-    color: gray;
+/* <-- Rsponsive design: media querys for mobile -->*/
+
+@media (max-width: 768px) {
+    .explanation,
+    #bivix-name,
+    #bivix-logo,
+    .container-box {
+        margin-left: 0;
+        transform: none;
+        text-align: center;
+    }
+
+    #login-submit,
+    #create-account,
+    #login-email,
+    #login-password,
+    #transfer-submit {
+        max-width: 100%;
+    }
+
+    .box-login {
+        margin: 10% 5%;
+        padding: 5%;
+    }
+
+    #amount-input label {
+        font-size: 24px;
+    }
+
+    .contact-book,
+    .category-transfers {
+        flex-direction: column;
+        margin-top: 20px;
+    }
 }
