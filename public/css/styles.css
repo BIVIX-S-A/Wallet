@@ -1,18 +1,27 @@
 body {
-  font-family: "Inter", sans-serif;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  margin: 0;
-  padding: 0;
-  background-color: #f0f0f0;
+  font-family: "Inter" sans-serif;
 }
 
 h1 {
   color: #000000;
 }
+body{
+    font-family: "Inter", sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;   
+  align-items: center;       
+  min-height: 100vh;         
+  background-color: #f0f0f0;
+}
+
 
 header{
     display: flex;
@@ -25,11 +34,13 @@ header{
 
 #bivix-name{
     font-weight: bolder;
+    transform: translate(-20px,0);
 }
 
 #bivix-logo {
     width: 60px;
     height: 50px;
+    transform: translate(-20px,0);
 }
 
 .small-divider{
@@ -51,29 +62,9 @@ header{
 }
 
 .explanation{
-    font-weight: 600;
-    font-size: 16px;
-    margin-top: 20px;
-    margin-bottom: 5px;
-}
-
-.guide{
-    font-weight: 400;
-    font-size: 14px;
-    color: #333;
-    margin-bottom: 20px;
-}
-
-.terms-conditions{
-    font-size: 12px;
-    color: #828282;
-    margin-top: 10px;
-    text-align: center;
-}
-
-.terms-conditions a{
-    color: #828282;
-    text-decoration: underline; 
+    font-weight: 500;
+    font-weight: bold;
+    transform: translate(65px,0);
 }
 
 #login-form, .form-container{
@@ -86,14 +77,27 @@ header{
     max-width: 300px;
 }
 
-#login-submit{
-    background-color: #a294f9;
-    border: 0;
-    width: 300px;
+.container-box{
+
+    transform: translate(30px,0);
+
 }
 
-#login-submit:hover{
-    cursor: pointer;
+#login-submit{
+    background-color: #a294f9;
+    border: 10px;
+    width: 300px;
+    font-weight: bold;
+}
+
+.box-login{
+    width: 350px;
+    padding: 30px;
+    margin: 40px auto; 
+    background: transparent; 
+    border: 2px solid #ccc; 
+    border-radius: 12px;
+  
 }
 
 #login-email {
@@ -107,20 +111,10 @@ header{
 }
 
 #create-account{
-    background-color: #D9D6D6;
+    background-color: #EEEEEE;
     border: 0;
     width: 300px;
-    display: inline-block;
-    color: black;
-    padding: 10px 20px;
-    text-align: center;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: 600;
-}
-
-#create-account:hover{
-    cursor:pointer;
+    font-weight: bold;
 }
 
 input[type="text"],
@@ -234,4 +228,8 @@ input[type="email"] {
     flex-direction: column;
     gap: 0px;                 
     box-sizing: border-box;
+}
+
+input::placeholder {
+    color: gray;
 }
