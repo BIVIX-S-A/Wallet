@@ -5,3 +5,7 @@ gem 'rackup'
 gem 'puma', '~> 6.6'
 gem 'sinatra-contrib'
 
+#For ActiveRecord with Sinatra and SQLite3
+gem 'sinatra-activerecord'
+gem 'sqlite3'
+gem 'rake'
