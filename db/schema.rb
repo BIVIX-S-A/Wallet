@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_16_035541) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_19_203015) do
   create_table "account", force: :cascade do |t|
     t.float "balance"
     t.string "cvu"
@@ -19,12 +19,32 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_16_035541) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "accounts", force: :cascade do |t|
+    t.decimal "balance", precision: 11, scale: 2, default: "0.0", null: false
+    t.string "cvu"
+    t.string "alias"
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_accounts_on_user_id"
+  end
+
   create_table "movements", force: :cascade do |t|
     t.integer "movement_id"
-    t.float "amount"
+    t.decimal "amount", precision: 11, scale: 2
     t.date "movement_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "transactions", force: :cascade do |t|
+    t.integer "source_account_id"
+    t.integer "target_account_id"
+    t.decimal "amount", precision: 11, scale: 2
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["source_account_id"], name: "index_transactions_on_source_account_id"
+    t.index ["target_account_id"], name: "index_transactions_on_target_account_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -40,4 +60,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_16_035541) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_foreign_key "accounts", "users"
+  add_foreign_key "transactions", "source_accounts"
+  add_foreign_key "transactions", "target_accounts"
 end

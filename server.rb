@@ -3,6 +3,7 @@ require_relative 'models/user'
 require_relative 'models/account'
 require_relative 'models/card'
 require_relative 'models/movement'
+require_relative 'models/transaction'
 require 'sinatra'
 require 'bundler/setup'
 require 'sinatra/reloader' if Sinatra::Base.environment == :development
