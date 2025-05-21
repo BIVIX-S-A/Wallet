@@ -8,7 +8,7 @@ require 'sinatra'
 require 'bundler/setup'
 require 'sinatra/reloader' if Sinatra::Base.environment == :development
 
-set :views, File.expand_path('app/views', __dir__)
+set :views, File.expand_path('views', __dir__)
 set :public_folder, File.expand_path('public', __dir__)
 
 class App < Sinatra::Application
@@ -20,14 +20,14 @@ class App < Sinatra::Application
   end
 
   get '/' do
-    erb :'home/index'
+    erb :'/index'
   end
 
   get '/transfers' do
-    erb :'home/transfers'
+    erb :'/transfers'
   end
 
   get '/register' do
-    erb :'home/register'
+    erb :'/register'
   end
 end
