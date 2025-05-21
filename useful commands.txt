@@ -1,0 +1,15 @@
+Levantar docker y seguir usando la terminal
+docker compose up app -d
+
+Chequear si el contenedor está funcionando
+docker ps 
+#Debe aparecer algún contenedor
+
+Abrir una una consola ruby con la app para testear modelos
+docker compose exec app bundle exec irb -I. -r server.rb
+
+Crear una migracion
+docker compose exec app bundle exec rake db:create_migration NAME=#nombre_migracion
+
+Correr la migracion
+docker compose exec app bundle exec rake db:migrate
