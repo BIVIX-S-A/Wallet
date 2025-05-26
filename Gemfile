@@ -10,3 +10,9 @@ gem 'sinatra-activerecord'
 gem 'sqlite3'
 gem 'rake'
 gem 'bcrypt', '~> 3.1.7'
+
+#For the views, configuring rspec
+group :test, :development do
+  gem 'rspec'
+  gem 'rack-test'
+end

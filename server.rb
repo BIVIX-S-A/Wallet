@@ -20,7 +20,7 @@ class App < Sinatra::Application
   end
 
   get '/' do
-    erb :'/index'
+    erb :'/layout'
   end
 
   get '/transfers' do

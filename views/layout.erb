@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Sinatra App</title>
+</head>
+<body>
+  <header>
+    <h1>Sinatra Auth Example</h1>
+    <nav>
+      <a href="/register.erb">Sign Up</a> |
+      <a href="/login.erb">Login</a>
+    </nav>
+    <hr>
+  </header>
+
+  <% if @error %>
+    <p style="color: red;"><%= @error %></p>
+  <% end %>
+
+  <%= yield %>
+</body>
+</html>
