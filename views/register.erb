@@ -11,12 +11,12 @@
     <p class="explanation">Create your new account</p>
     <p class="guide">Enter your email to sign up for this app</p>
     <div class="form-container">
-        <form method="get" id="login-form">
+        <form method="post" action="/register" id="login-form">
             <label for="login-email">
-                <input type="email" id="login-email" placeholder=" youremail@example.com" name="login-form">
+                <input type="email" id="login-email" placeholder=" youremail@example.com" name="email">
             </label>
             <label for="login-submit">
-                <input type="submit" id="login-submit" value="Continue" name="login-submit">
+                <input type="submit" id="login-submit" value="Continue">
             </label>
             <p class="terms-conditions">
                 By clicking continue, you agree to our 

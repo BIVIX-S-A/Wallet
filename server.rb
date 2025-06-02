@@ -5,6 +5,9 @@ require_relative 'models/card'
 require_relative 'models/movement'
 require_relative 'models/transaction'
 require 'sinatra'
+require 'pony'
+require 'valid_email2'
+require 'dotenv/load'
 require 'bundler/setup'
 require 'sinatra/reloader' if Sinatra::Base.environment == :development
 
@@ -18,6 +21,21 @@ class App < Sinatra::Application
       puts 'Reloaded...'
     end
   end
+
+  enable :sessions
+
+  Pony.options = {
+    via: :smtp,
+    via_options:{
+      address: ENV['SMTP_ADDRESS'],
+      port: ENV['SMTP_PORT'].to_i,
+      user_name: ENV['SMTP_USER'],
+      password: ENV['SMTP_PASS'],
+      authentication: :plain,
+      domain: ENV['SMTP_DOMAIN'],
+      enable_starttls_auto: true
+    }
+  }
 
   get '/' do
     erb :'index'
@@ -47,6 +65,31 @@ class App < Sinatra::Application
 
   get '/register' do
     erb :'register'
+  end
+
+  post '/register' do
+    email = params[:email]
+    
+    #Genarating a radom code
+    code = rand(10**(ENV['VERIFICATION_CODE_LENGTH'].to_i - 1)...10**ENV['VERIFICATION_CODE_LENGTH'].to_i)
+
+    #Storing it in session
+    session[:verification_code] = code.to_s
+    session[:verification_email] = email
+    session[:code_expiry] = Time.now + ENV['VERIFICATION_CODE_EXPIRY'].to_i
+
+    #Send mail using pony structure
+    Pony.mail(
+      to: email,
+      from: ENV['SMTP_FROM'],
+      subject: 'Your BIVIX verification code',
+      body: "You are just a few steps away from join to the BIVIX family, this is your verification code = #{code}")
+
+      redirect 'register/verify'
+  end
+
+  get '/register/verify' do
+    erb :'code_verification'
   end
 
   get '/dashboard' do

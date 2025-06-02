@@ -56,7 +56,7 @@ If you doesn't have docker installed yet check the [Docker Installation Guide](h
 
 - Open a terminal and go to the directory where you cloned this repository, then run 
 ```bash
-docker compose up app
+docker compose up --build 
 ```
 
 - In your favorite browser search [http://localhost:8000](http://localhost:8000)

@@ -11,6 +11,11 @@ gem 'sqlite3'
 gem 'rake'
 gem 'bcrypt', '~> 3.1.7'
 
+#For mail sending and registration 
+gem 'valid_email2'
+gem 'dotenv'
+gem 'pony'
+
 #For the views, configuring rspec
 group :test, :development do
   gem 'rspec'
