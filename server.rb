@@ -38,11 +38,11 @@ class App < Sinatra::Application
   }
 
   get '/' do
-    erb :'index'
+    erb :'index', layout: true
   end
 
   get '/login' do
-    erb :'login'
+    erb :'login', layout: true
   end
 
   post '/login' do
@@ -60,11 +60,11 @@ class App < Sinatra::Application
   end
 
   get '/transfers' do
-    erb :'transfers'
+    erb :'transfers', layout: false
   end
 
   get '/register' do
-    erb :'register'
+    erb :'register', layout: true
   end
 
   post '/register' do
@@ -89,10 +89,10 @@ class App < Sinatra::Application
   end
 
   get '/register/verify' do
-    erb :'code_verification'
+    erb :'code_verification', layout: false
   end
 
   get '/dashboard' do
-    erb :'dashboard'
+    erb :'dashboard', layout: false
   end
 end
