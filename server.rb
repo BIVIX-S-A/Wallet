@@ -22,6 +22,8 @@ class App < Sinatra::Application
     end
   end
 
+  Dotenv.load
+
   enable :sessions
 
   Pony.options = {
@@ -89,7 +91,23 @@ class App < Sinatra::Application
   end
 
   get '/register/verify' do
-    erb :'code_verification', layout: false
+    erb :'code_verification', layout: :'layout'
+  end
+
+  post '/register/verify' do
+    entered_code = params[:code]
+    if entered_code == session[:verification_code] && Time.now < session[:code_expiry]
+      user = User.create(email: session[:verification_email])
+      session[:user_id] = user.id
+      redirect '/registration-final'
+    else
+      @error = "Invalid or expired verification code."
+      erb :'code_verification', layout: :'layout'
+    end
+  end
+
+  get '/registration-final' do
+    erb :'registration_final'
   end
 
   get '/dashboard' do

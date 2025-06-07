@@ -82,6 +82,19 @@ h1, h3, .explanation {
     width: 100%;
 }
 
+.box-login {
+    width: 100%;
+    max-width: 400px;
+    padding: 32px 24px 24px 24px;
+    margin: 32px auto;
+    background: #fff;
+    border: 2px solid #ccc;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.10), 0 1.5px 8px rgba(0,0,0,0.06);
+    box-sizing: border-box;
+}
+
+
 input[type="email"],
 input[type="password"],
 input[type="number"] {
@@ -291,7 +304,6 @@ input[type="submit"]:hover, #login-submit:hover, #transfer-submit:hover {
     background: #8376f5;
 }
 
-/* --- GENERAL FORM ELEMENTS (para login/register también) --- */
 input[type="email"],
 input[type="password"],
 input[type="number"],
@@ -339,10 +351,18 @@ input[type="submit"]:hover, input[type="button"]:hover, #login-submit:hover, #tr
     body {
         padding: 0 2vw;
     }
+
     .form-container, .box-login, .container-transfer, .contact-book, .category-transfers, .submit-button-transfer {
         max-width: 100vw;
         width: 100%;
     }
+
+    .box-login {
+        max-width: 95vw;
+        padding: 20px 6vw 16px 6vw;
+        margin: 16px auto;
+    }
+    
     input[type="email"],
     input[type="password"],
     input[type="number"],
