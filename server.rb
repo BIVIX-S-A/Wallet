@@ -95,7 +95,7 @@ class App < Sinatra::Application
   end
 
   post '/register/verify' do
-    entered_code = params[:code]
+    entered_code = params[:verification_code]
     if entered_code == session[:verification_code] && Time.now < session[:code_expiry]
       user = User.create(email: session[:verification_email])
       session[:user_id] = user.id
