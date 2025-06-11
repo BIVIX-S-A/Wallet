@@ -49,11 +49,11 @@ class App < Sinatra::Application
 
   post '/login' do
     email = params[:email]
-    passwd = params[:password]
+    password = params[:password]
     user = User.find_by(email: email)
 
     if user && user.authenticate(password)
-      session[:user_id] = user_id
+      session[:user_id] = user.id
       redirect '/dashboard'
     else
       @error = "Invalid email or password"
@@ -97,7 +97,11 @@ class App < Sinatra::Application
   post '/register/verify' do
     entered_code = params[:verification_code]
     if entered_code == session[:verification_code] && Time.now < session[:code_expiry]
-      user = User.create(email: session[:verification_email])
+      user = User.create(
+        email: session[:verification_email],
+        password: 'Temp1234*',
+        name: 'Pending'
+        )
       session[:user_id] = user.id
       redirect '/registration-final'
     else
@@ -110,8 +114,35 @@ class App < Sinatra::Application
     erb :'registration_final'
   end
 
+  post '/register/complete' do
+  halt(redirect('/login')) unless session[:user_id]
+
+  user = User.find(session[:user_id])
+  
+  user.update(
+    name: params[:name],
+    surname: params[:surname],
+    dni: params[:dni],
+    birth_date: params[:birth_date],
+    phone: params[:phone],
+    address: params[:address],
+    password: params[:password],
+    marital_status: params[:marital_status]&.to_i,
+    legal_entity: params[:legal_entity] == 'true'
+  )
+  
+  if user.errors.empty?
+    Account.create(user: user, balance: 0.0)
+    redirect '/dashboard'
+  else
+    @errors = user.errors.full_messages
+    erb :'registration_final'
+  end
+end
+
   get '/dashboard' do
     halt(redirect('/')) unless session[:user_id]
+    @user = User.find(session[:user_id])
     erb :'dashboard', layout: false
   end
 

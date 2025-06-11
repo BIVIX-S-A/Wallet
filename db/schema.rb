@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_24_192304) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_26_215155) do
   create_table "accounts", force: :cascade do |t|
     t.decimal "balance", precision: 11, scale: 2, default: "0.0", null: false
     t.string "cvu"
@@ -64,6 +64,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_24_192304) do
     t.boolean "legal_entity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password_digest"
   end
 
   add_foreign_key "accounts", "users"
