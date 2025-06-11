@@ -5,6 +5,6 @@ window.addEventListener('load', () => {
 
     setTimeout(() => {
       window.location.href = "/check_session";
-    }, 1000);
-  }, 5000);
+    }, 500);
+  }, 4000);
 });

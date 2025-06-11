@@ -366,8 +366,8 @@ input[type="submit"]:hover, input[type="button"]:hover, #login-submit:hover, #tr
     width: 100px;
     height: auto;
     opacity: 0;
-    animation: fadeInLogo 3s ease-in forwards;
-    animation-delay: 1s;
+    animation: fadeInLogo 2s ease-in forwards;
+    animation-delay: 0;
 }
 
 /* Animación de entrada */
