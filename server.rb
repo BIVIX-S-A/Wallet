@@ -48,8 +48,8 @@ class App < Sinatra::Application
   end
 
   post '/login' do
-    email = params[:email]
-    password = params[:password]
+    email = params[:login_mail]
+    password = params[:login_password]
     user = User.find_by(email: email)
 
     if user && user.authenticate(password)
