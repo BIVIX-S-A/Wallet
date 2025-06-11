@@ -346,6 +346,42 @@ input[type="submit"]:hover, input[type="button"]:hover, #login-submit:hover, #tr
     background: #d6d6d6;
 }
 
+/* --- BOOT SCREEN --- */
+#boot-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 1s ease;
+}
+
+.boot-logo {
+    width: 100px;
+    height: auto;
+    opacity: 0;
+    animation: fadeInLogo 3s ease-in forwards;
+    animation-delay: 1s;
+}
+
+/* Animación de entrada */
+@keyframes fadeInLogo {
+    0% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
 /* --- MOBILE RESPONSIVE --- */
 @media (max-width: 600px) {
     body {

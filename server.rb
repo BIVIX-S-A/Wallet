@@ -40,7 +40,7 @@ class App < Sinatra::Application
   }
 
   get '/' do
-    erb :'index', layout: true
+    erb :'index', layout: false
   end
 
   get '/login' do
@@ -111,6 +111,20 @@ class App < Sinatra::Application
   end
 
   get '/dashboard' do
+    halt(redirect('/')) unless session[:user_id]
     erb :'dashboard', layout: false
+  end
+
+  get '/check_session' do
+    if session[:user_id]
+      redirect '/dashboard'
+    else
+      redirect '/login'
+    end
+  end
+
+  get '/logout' do
+    session.clear
+    redirect '/'
   end
 end
