@@ -1,2 +1,69 @@
-<h2>Welcome, <%= @user.name %>!</h2>
-<p>You are now logged in.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>  
+    <title>Bivix: smart, secure, yours</title>
+</head>
+<body>
+    <header>
+        <h1 class="bivix-name">BIVIX</h1>
+    </header>
+
+    <main class="content">
+        <section class="container-balance">
+            <p class="balance-label">Balance</p>
+            <h2 class="balance-amount">AR$ <%= @user.account.balance %></h2>
+            <p class="balance-growth">+20% mont over month</p>
+        </section>
+
+        <section class="actions">
+            <a class="action-button" href="/card">
+                <img src="assets/card.png">
+                <span class="action-button-text">Card</span>
+            </a>
+            <a class="action-button" href="/savings">
+                <img src="assets/pig.png">
+                <span class="action-button-text">Savings</span>
+            </a>
+            <a class="action-button" href="/charge-link">
+                <img src="assets/link.png">
+                <span class="action-button-text">Charge w/ link</span>
+            </a>
+            <a class="action-button"  href="/charge-qr">
+                <img src="assets/qr.png">
+                <span class="action-button-text">Charge w/ QR</span>
+            </a>
+        </section>
+
+        <section class="transactions">
+            <h3>Latest Transactions</h3>
+            <ul>
+                <li>
+                    <span class="icon">💵</span> 
+                    <span class="label">Transfer Received </span> 
+                    <span class="amount positive">+3580</span>
+                </li>
+                <li>
+                    <span class="icon">🛒</span> 
+                    <span class="label"> Payment </span>
+                    <span class="amount negative">-154.27</span>
+                </li>
+                <li>
+                    <span class="icon">💵</span> 
+                    <span class="label"> Transfer Received </span>
+                    <span class="amount positive">+798</span>
+                </li>
+                <li>
+                    <span class="icon">🛒</span> 
+                    <span class="label"> Payment </span>
+                    <span class="amount negative">-336.18</span>
+                </li>
+                <li>
+                    <span class="icon">🛒</span> 
+                    <span class="label"> Payment </span>
+                    <span class="amount negative">-10.50</span>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+</body>

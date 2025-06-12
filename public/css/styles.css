@@ -433,3 +433,105 @@ input[type="submit"]:hover, input[type="button"]:hover, #login-submit:hover, #tr
         padding: 14px 0;
     }
 }
+
+
+/* DASHBOARD */
+.container-balance {
+    text-align: left;
+    margin: 1rem;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+}
+
+.balance-label {
+    text-align: left;
+}
+
+.balance-amount {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin: 0.5rem 0;
+}
+
+.balance-growth {
+    color: gray;
+    font-size: 0.9rem;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 1rem;
+    margin: 1rem;
+}
+
+.action-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px dashed #ddd;
+    padding: 0.5rem;
+    border-radius: 8px;
+    width: 55px;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;        
+    background: none;     
+    cursor: pointer; 
+}
+
+.action-button:hover {
+    background: #f6f1ff; 
+    border-color: #a294f9;
+}
+
+.action-button-text {
+    font-size: 0.6rem;
+    margin-top: 0.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+
+}
+
+.transactions {
+    margin: 1rem;
+}
+
+.transactions h3 {
+    text-align: center;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: gray;
+}
+
+.transactions ul {
+    list-style: none;
+    padding: 0;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.transactions li {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.amount.positive {
+    color: green;
+}
+
+.amount.negative {
+    color: red;
+}
+
+.actions img,
+.bottom-nav img {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 4px;
+}

@@ -143,7 +143,7 @@ end
   get '/dashboard' do
     halt(redirect('/')) unless session[:user_id]
     @user = User.find(session[:user_id])
-    erb :'dashboard', layout: false
+    erb :'dashboard', layout: true
   end
 
   get '/check_session' do
@@ -157,5 +157,21 @@ end
   get '/logout' do
     session.clear
     redirect '/'
+  end
+
+  get '/card' do
+    erb :'card', layout: true
+  end
+
+  get '/savings' do
+    erb :'savings', layout: true
+  end
+
+  get '/charge-link' do
+    erb :'charge-link', layout: true
+  end
+
+  get '/charge-qr' do
+    erb :'charge-qr', layout: true
   end
 end
