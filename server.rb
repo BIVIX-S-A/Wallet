@@ -62,6 +62,8 @@ class App < Sinatra::Application
   end
 
   get '/transfers' do
+    halt(redirect('/')) unless session[:user_id]
+    @user = User.find(session[:user_id])
     erb :'transfers', layout: false
   end
 

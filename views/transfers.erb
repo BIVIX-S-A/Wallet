@@ -26,8 +26,7 @@
                 </div>
     
                 <div id ="balance-transfer">
-                    <% @balance = 500.00 %> <%# Testing variable %>
-                    <p id= "balance-transfer-amount">Balance: $<%= sprintf('%.2f', @balance) %></p>
+                    <p id= "balance-transfer-amount">Balance: AR$<%= @user.account.balance %></p>
                 </div>    
             </div>
             
