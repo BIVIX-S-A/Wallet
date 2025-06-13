@@ -137,7 +137,10 @@ input[type="submit"]:hover, #login-submit:hover, #transfer-submit:hover {
     background: #8376f5;
 }
 
-
+.layout-links {
+    text-decoration: none;
+    color: inherit;
+}
 
 #create-account, input[type="button"] {
     background: #eeeeee;

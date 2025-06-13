@@ -7,19 +7,19 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-    <title>My Sinatra App</title>
+    <link rel="icon" href="/assets/bivix.ico" type="image/x-icon">
 </head>
 <body>
     <header>
         <h1 class="bivix-name">BIVIX</h1>
         <% if session[:user_id] %>
             <nav>
-                <a href="/logout">Log Out</a>
+                <a href="/logout" class="layout-links">Log Out</a>
             </nav>
         <% else %>
             <nav>
-                <a href="/register">Sign Up</a> |
-                <a href="/login">Login</a>
+                <a href="/register" class="layout-links">Sign Up</a> |
+                <a href="/login" class="layout-links">Login</a>
             </nav>
         <% end %>
         <hr>
