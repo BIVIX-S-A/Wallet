@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_26_215155) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_16_201306) do
   create_table "accounts", force: :cascade do |t|
     t.decimal "balance", precision: 11, scale: 2, default: "0.0", null: false
     t.string "cvu"
@@ -32,6 +32,17 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_26_215155) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["account_id"], name: "index_cards_on_account_id"
+  end
+
+  create_table "contacts", force: :cascade do |t|
+    t.integer "owner_account_id", null: false
+    t.integer "contact_account_id", null: false
+    t.string "custom_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contact_account_id"], name: "index_contacts_on_contact_account_id"
+    t.index ["owner_account_id", "contact_account_id"], name: "index_contacts_owner_and_contact", unique: true
+    t.index ["owner_account_id"], name: "index_contacts_on_owner_account_id"
   end
 
   create_table "movements", force: :cascade do |t|
@@ -69,6 +80,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_26_215155) do
 
   add_foreign_key "accounts", "users"
   add_foreign_key "cards", "accounts"
+  add_foreign_key "contacts", "accounts", column: "contact_account_id"
+  add_foreign_key "contacts", "accounts", column: "owner_account_id"
   add_foreign_key "transactions", "accounts", column: "source_account_id"
   add_foreign_key "transactions", "accounts", column: "target_account_id"
 end
