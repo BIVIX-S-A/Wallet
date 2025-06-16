@@ -10,7 +10,11 @@ In this project, a virtual wallet will be developed.
 - **HTML5**
 - **CSS3**
 - **SQLite** for the database
-- **Gemfile** for managing Ruby dependencies
+- **Bundle** for managing Ruby dependencies
+- **Docker**
+- **BCrypt**
+- **Pony**
+- **Spec**
 
 ## 📌 Features
 
@@ -48,7 +52,7 @@ docker compose version
 
 
 
-If you doesn't have docker installed yet check the [Docker Installation Guide](https://docs.docker.com/engine/)
+If you don't have docker installed yet check the [Docker Installation Guide](https://docs.docker.com/engine/)
 
 ## Running the app
 
