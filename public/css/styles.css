@@ -604,6 +604,17 @@ input[type="submit"]:hover, input[type="button"]:hover, #login-submit:hover, #tr
     box-sizing: border-box;
 }
 
+.bottom-navigation-bar-inner { 
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto; 
+    margin-bottom: 10px;
+   
+}
+
 .nav-item{
     display: flex;
     flex-direction: column;
@@ -612,16 +623,16 @@ input[type="submit"]:hover, input[type="button"]:hover, #login-submit:hover, #tr
 }
 
 .nav-item img {
-    width: 28px;
-    height: 28px;
+    width: 24px;
+    height: 24px;
     margin-bottom: 2px;
 }
 
 .nav-item.nav-item-central {
     background-color: #a294f9;
     border-radius: 50%;
-    width: 60px;
-    height: 60px;
+    width: 55px;
+    height: 55px;
     padding: 0;
     margin: 0 5px;
     border: 3px solid white;
@@ -630,7 +641,7 @@ input[type="submit"]:hover, input[type="button"]:hover, #login-submit:hover, #tr
 }
 
 .nav-item.nav-item-central img { 
-    width: 34px; 
-    height: 34px;
+    width: 30px; 
+    height: 30px;
     margin-bottom: 0; 
 }
