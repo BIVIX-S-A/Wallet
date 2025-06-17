@@ -645,3 +645,49 @@ input[type="submit"]:hover, input[type="button"]:hover, #login-submit:hover, #tr
     height: 30px;
     margin-bottom: 0; 
 }
+
+/* Responsive dashboard for desktop */
+@media (min-width: 900px) {
+    .content {
+        max-width: 900px;
+        margin: 2rem auto 5rem auto;
+        background: #fafaff;
+        border-radius: 18px;
+        box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+        padding: 3rem 4rem;
+        display: flex;
+        font-size: 1.15rem;
+        flex-direction: column;
+        gap: 2rem;
+    }
+    .container-balance{
+        padding: 2.5rem 1rem;
+        margin: 0;
+    }
+    
+    .balance-amount {
+        font-size: 2.7rem;
+    }
+    .balance-label,
+    .balance-growth {
+        font-size: 1.3rem;
+    }
+    .actions {
+        gap: 2.5rem;
+    }
+    .action-button {
+        padding: 1.2rem 2.2rem;
+        font-size: 1.15rem;
+    }
+    .action-button img {
+        width: 38px;
+        height: 38px;
+    }
+    .transactions h3 {
+        font-size: 1.4rem;
+    }
+    .transactions li {
+        font-size: 1.15rem;
+        padding: 1.1rem 0;
+    }
+}
