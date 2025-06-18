@@ -64,7 +64,7 @@ class App < Sinatra::Application
   get '/transfers' do
     halt(redirect('/')) unless session[:user_id]
     @user = User.find(session[:user_id])
-    erb :'transfers', layout: false
+    erb :'transfers', layout: true
   end
 
   get '/register' do
@@ -176,4 +176,18 @@ end
   get '/charge-qr' do
     erb :'charge-qr', layout: true
   end
+
+  get '/history' do
+    halt(redirect('/')) unless session[:user_id]
+    @user = User.find(session[:user_id])
+    @movements = @user.movements.order(created_at: :desc)
+    erb :'history', layout: true
+  end
+
+  get '/pay-qr' do
+    halt(redirect('/')) unless session[:user_id]
+    @user = User.find(session[:user_id])
+    erb :'pay-qr', layout: true
+  end
+
 end

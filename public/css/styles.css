@@ -19,6 +19,7 @@ header {
     background: none;
     box-shadow: none;
     border: none;
+    padding-top: 1.5rem;
 }
 
 #bivix-logo {
