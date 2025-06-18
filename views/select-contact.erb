@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contacts</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="icon" href="/assets/bivix.ico" type="image/x-icon">
+</head>
+<body>
+    <header class="page-header">
+        <a href="/transfers" class="header-button back-button">
+           &larr; Back
+        </a>
+        <h3 id="contacts-title">My Contacts</h3>
+    </header> 
+
+    <div class="contact-list">
+        <% if @contacts.any? %>
+            <% @contacts.each do |contact| %>   
+                <div class="contact-item">
+                    <a href="/transfers?contact_id=<%= contact.contact_account.id %>">
+                        <div class="contact-info">
+                            <span class="contact-name">
+                                <%= contact.contact_account.user.name %> <%= contact.contact_account.user.surname %>
+                            </span>
+                            <span class="contact-alias">(<%= contact.custom_name %>)</span>
+                        </div>
+                    </a>
+                </div>
+            <% end %>
+        <% else %>
+            <div class="empty-state">
+                <p>You don't have any contacts yet.</p>
+            </div>
+        <% end %>
+    </div>
+
+
+    <a href="/add-contact" class="header-button add-button">
+            ADD NEW
+    </a>
+
+</body>
+</html>

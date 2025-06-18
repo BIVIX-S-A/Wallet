@@ -4,9 +4,9 @@ require_relative 'models/account'
 require_relative 'models/card'
 require_relative 'models/movement'
 require_relative 'models/transaction'
+require_relative 'models/contact'
 require 'sinatra'
 require 'pony'
-require 'valid_email2'
 require 'dotenv/load'
 require 'bundler/setup'
 require 'sinatra/reloader' if Sinatra::Base.environment == :development
@@ -117,30 +117,30 @@ class App < Sinatra::Application
   end
 
   post '/register/complete' do
-  halt(redirect('/login')) unless session[:user_id]
+    halt(redirect('/login')) unless session[:user_id]
 
-  user = User.find(session[:user_id])
-  
-  user.update(
-    name: params[:name],
-    surname: params[:surname],
-    dni: params[:dni],
-    birth_date: params[:birth_date],
-    phone: params[:phone],
-    address: params[:address],
-    password: params[:password],
-    marital_status: params[:marital_status]&.to_i,
-    legal_entity: params[:legal_entity] == 'true'
-  )
-  
-  if user.errors.empty?
-    Account.create(user: user, balance: 0.0)
-    redirect '/dashboard'
-  else
-    @errors = user.errors.full_messages
-    erb :'registration_final'
+    user = User.find(session[:user_id])
+    
+    user.update(
+      name: params[:name],
+      surname: params[:surname],
+      dni: params[:dni],
+      birth_date: params[:birth_date],
+      phone: params[:phone],
+      address: params[:address],
+      password: params[:password],
+      marital_status: params[:marital_status]&.to_i,
+      legal_entity: params[:legal_entity] == 'true'
+    )
+    
+    if user.errors.empty?
+      Account.create(user: user, balance: 0.0)
+      redirect '/dashboard'
+    else
+      @errors = user.errors.full_messages
+      erb :'registration_final'
+    end
   end
-end
 
   get '/dashboard' do
     halt(redirect('/')) unless session[:user_id]
@@ -188,6 +188,40 @@ end
     halt(redirect('/')) unless session[:user_id]
     @user = User.find(session[:user_id])
     erb :'pay-qr', layout: true
+  end
+
+  get '/select-contact' do
+    halt(redirect('/login')) unless session[:user_id]
+    
+    @user = User.find(session[:user_id])
+    @contacts = @user.account.owned_contacts_entries
+    
+    erb :'select-contact', layout: false  
+  end
+
+  get '/add-contact' do
+    halt(redirect('/login')) unless session[:user_id]
+    erb :'add-contact', layout: false
+  end
+
+  post '/add-contact' do
+    halt(redirect('/login')) unless session[:user_id]
+    
+    @user = User.find(session[:user_id])
+    
+    contact_account = Account.joins(:user).find_by(users: { email: params[:contact_email] })
+    
+    if contact_account && contact_account != @user.account
+      Contact.create(
+        owner_account: @user.account,
+        contact_account: contact_account,
+        custom_name: params[:custom_name]
+      )
+      redirect '/select-contact'
+    else
+      @error = "Contact not found or invalid"
+      erb :'add-contact', layout: false
+    end
   end
 
 end

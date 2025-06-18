@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AddContact</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="icon" href="/assets/bivix.ico" type="image/x-icon">
+</head>
+<body>
+    <header class="page-header">
+        <a href="/select-contact" class="header-button back-button">
+            &larr; Back
+        </a>
+        <h3 id="add-contact-title">Add Contact</h3>
+    </header>
+
+    <div class="form-container">
+        <form method="post" action="/add-contact" id="add-contact-form">
+            <div class="input-group">
+                <label for="contact-email">Contact Email</label>
+                <input type="email" id="contact-email" name="contact_email" 
+                       placeholder="friend@example.com" required>
+            </div>
+
+            <div class="input-group">
+                <label for="custom-name">Custom Name (Optional)</label>
+                <input type="text" id="custom-name" name="custom_name" 
+                       placeholder="e.g., John's Savings">
+            </div>
+
+            <% if @error %>
+                <p class="error-message"><%= @error %></p>
+            <% end %>
+
+            <div class="submit-button">
+                <input type="submit" value="Add Contact">
+            </div>
+        </form>
+    </div>
+</body>
+</html>
