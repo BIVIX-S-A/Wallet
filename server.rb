@@ -187,13 +187,14 @@ class App < Sinatra::Application
   end
 
   get '/charge-qr' do
+    @user = User.find(session[:user_id])
     erb :'charge-qr', layout: true
   end
 
   get '/history' do
     halt(redirect('/')) unless session[:user_id]
     @user = User.find(session[:user_id])
-    @movements = @user.movements.order(created_at: :desc)
+    @movements = @user.account.movements.order(created_at: :desc)
     erb :'history', layout: true
   end
 

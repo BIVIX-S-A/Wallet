@@ -3,6 +3,7 @@ class Account < ActiveRecord::Base
   has_one :card
   has_many :source_transactions, class_name: 'Transaction', foreign_key: :source_account_id
   has_many :target_transactions, class_name: 'Transaction', foreign_key: :target_account_id
+  has_many :movements, class_name: 'Movement', foreign_key: :account_id
   
   # -- Return all contacts saved by this account --
   has_many :owned_contacts_entries, class_name: 'Contact', foreign_key: :owner_account_id #return contacts 

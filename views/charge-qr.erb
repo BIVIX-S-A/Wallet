@@ -2,7 +2,7 @@
 <div id="qr-container">
     <a href="/dashboard" class="header-button back-button">&larr; Home <%# &larr is a arrow %></a>
     <h1>YOUR QR CODE</h1>
-    <div id="qr-code" data-account-id="<%= @user.account.id %>"></div>
+    <div id="qr-code" account=<%= @user.account.id %>></div>
     <p class="qr-info">This qr code is only functional for transactions between two bivix accounts</p>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
