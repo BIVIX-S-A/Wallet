@@ -8,9 +8,14 @@ docker ps
 Abrir una una consola ruby con la app para testear modelos
 docker compose exec app bundle exec irb -I. -r server.rb
 
-Crear una migracion
+Crear una migración
 docker compose exec app bundle exec rake db:create_migration NAME=#nombre_migracion
 
-Correr la migracion
+Correr la migración
 docker compose exec app bundle exec rake db:migrate
 
+Correr la migración en la base de datos de test
+docker compose exec app env RACK_ENV=test bundle exec rake db:migrate
+
+Correr los test
+docker compose exec app bundle exec rspec
