@@ -187,6 +187,7 @@ class App < Sinatra::Application
   end
 
   get '/charge-qr' do
+    @user = User.find(session[:user_id])
     erb :'charge-qr', layout: true
   end
 

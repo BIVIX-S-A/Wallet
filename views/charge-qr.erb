@@ -2,8 +2,13 @@
 <html>
 <head>
     <title>Charge with QR</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </head>
 <body>
-    
+    <div class="qr-container">
+        <h1>YOUR QR CODE</h1>
+        <div id="qr-code" account="<%= @user.account.id %>"></div>
+    </div>
+    <script src="/js/qrcode.js"></script>
 </body>
 </html>
