@@ -157,6 +157,14 @@ input[type="submit"]:hover, #login-submit:hover, #transfer-submit:hover {
     color: inherit;
 }
 
+.layout-links:hover{
+    color:#a294f9
+}
+
+.layout-links:active{
+    color: #60608c;
+}
+
 #create-account, input[type="button"] {
     display: block;
     width: 100%;
@@ -1008,6 +1016,36 @@ label {
     #transfer-submit:hover {
         background-color: #8376f5;
     }
+
+}
+/* QR styling */
+#qr-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    min-height: 60vh;
+    max-width: 80vw;
+    background: #f5f7ff;
+    border: 2px solid #ccc;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.10), 0 1.5px 8px rgba(0,0,0,0.06);
+    box-sizing: border-box;
+}
+
+#qr-container > h1{
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: large;
+    color: #60608c
+}
+
+.qr-info{
+    width: 60%;
+    text-align: center;
+    color:#898AC4
 }
 
 
