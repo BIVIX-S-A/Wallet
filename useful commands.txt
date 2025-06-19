@@ -20,6 +20,8 @@ docker compose exec app env RACK_ENV=test bundle exec rake db:migrate
 Correr los test
 docker compose exec app bundle exec rspec
 
+NOTA: puede que los test fallen porque los mails se están repitiendo mails de prueba
+si es el caso, dropear la base de datos de test y crearla y migrarla de nuevo
 
 Cuentas útiles para testing
 email: payaso@yopmail.com

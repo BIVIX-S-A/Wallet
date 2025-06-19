@@ -87,7 +87,7 @@ class App < Sinatra::Application
   post '/register' do
     email = params[:email]
     
-    #Genarating a radom code
+    #Generating a random code
     code = rand(10**(ENV['VERIFICATION_CODE_LENGTH'].to_i - 1)...10**ENV['VERIFICATION_CODE_LENGTH'].to_i)
 
     #Storing it in session
@@ -266,7 +266,7 @@ class App < Sinatra::Application
       return erb :'transfers', layout: true
     end
 
-    # 5. If everything is successful, render the success view
+    # If everything is successful, render the success view
     erb :'transfer-success', layout: false
   end
 
