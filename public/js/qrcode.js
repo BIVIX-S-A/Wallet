@@ -4,9 +4,6 @@ const accountId = qrdiv.getAttribute("account")
 var qrcode = new QRCode(qrdiv, {
     width:200,
     height: 200,
-    colorDark : "#8376f5",
-    colorLight : "#f5f7ff",
-    correctLevel : QRCode.CorrectLevel.H
 })
 
 function generateQR() {

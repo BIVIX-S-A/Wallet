@@ -192,6 +192,8 @@ class App < Sinatra::Application
 
   get '/charge-link' do
     halt(redirect('/login')) unless session[:user_id]
+    @user = User.find(session[:user_id])
+    @account = @user.account
     erb :'charge-link', layout: true
   end
 
