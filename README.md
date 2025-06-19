@@ -58,6 +58,20 @@ If you don't have docker installed yet check the [Docker Installation Guide](htt
 
 - Clone this repository
 
+- Change the example.env file with your configuration
+
+- In views/charge-link.erb change the response
+```javascript
+const response = await fetch('https://api.tinyurl.com/create', {
+        method: 'POST',
+        headers: {
+          'Authorization': 'Bearer API_KEY_HERE', //put ypur api key instead of API_KEY_HERE
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ url: longUrl })
+      }
+```
+
 - Open a terminal and go to the directory where you cloned this repository, then run 
 ```bash
 docker compose up --build 
