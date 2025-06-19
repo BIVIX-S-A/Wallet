@@ -1048,5 +1048,26 @@ label {
     color:#898AC4
 }
 
+/* Pay with QR */
+#reader {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;    
+    width: 100%;
+    max-width: 400px;
+    height: 300px;
+    border: 2px solid #ccc;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.10), 0 1.5px 8px rgba(0,0,0,0.06);
+}
 
-
+@media (max-width: 900px) {
+    #reader {
+        width: 100vw;
+        height: calc(100vh - 110px); /* Ajustá 60px al alto real de tu header */
+        max-width: 100vw;
+        max-height: calc(100vh - 110px);
+        border-radius: 0;
+        border: none;
+    }
+}

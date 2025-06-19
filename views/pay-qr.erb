@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet", href="/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="icon" href="/assets/bivix.ico" type="image/x-icon">
+    <title><%= @page_title || "BIVIX: Smart, Secure, Yours" %></title>
+</head>
+<body>
+    <header class="page-header">
+        <a href="/dashboard" class="header-button back-button">
+            &larr; Home
+        </a>
+        <h3 id="transfers-title">Point your camera to the QR code</h3>
+    </header>
+    <div id="reader"></div>
+    <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+    <script src="/js/qrcode-reader.js"></script>
+</body>
+</html>
+

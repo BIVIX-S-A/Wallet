@@ -213,7 +213,7 @@ class App < Sinatra::Application
   get '/pay-qr' do
     halt(redirect('/login')) unless session[:user_id]
     @user = User.find(session[:user_id])
-    erb :'pay-qr', layout: true
+    erb :'pay-qr', layout: false
   end
 
   get '/select-contact' do
