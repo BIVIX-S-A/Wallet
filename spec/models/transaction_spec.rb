@@ -95,6 +95,45 @@ RSpec.describe Transaction do
       balance_after = source_account.balance + target_account.balance
       expect(balance_after).to eq(balance_before)
     end
+
+    it 'creates movements for both accounts' do
+      transaction = Transaction.create!(
+        source_account: source_account,
+        target_account: target_account,
+        amount: 30.0
+      )
+
+      expect(Movement.where(account: source_account, bivix_transaction: transaction).count).to eq(1)
+      expect(Movement.where(account: target_account, bivix_transaction: transaction).count).to eq(1)
+    end
+
+    it 'creates movements with correct amounts' do
+      transaction = Transaction.create!(
+        source_account: source_account,
+        target_account: target_account,
+        amount: 20.0
+      )
+
+      source_movement = Movement.find_by(account: source_account, bivix_transaction: transaction)
+      target_movement = Movement.find_by(account: target_account, bivix_transaction: transaction)
+
+      expect(source_movement.amount).to eq(-20.0)
+      expect(target_movement.amount).to eq(20.0)
+    end
+
+    it 'creates movements with the current date' do
+      transaction = Transaction.create!(
+        source_account: source_account,
+        target_account: target_account,
+        amount: 10.0
+      )
+
+      source_movement = Movement.find_by(account: source_account, bivix_transaction: transaction)
+      target_movement = Movement.find_by(account: target_account, bivix_transaction: transaction)
+
+      expect(source_movement.movement_date).to eq(Time.now.to_date)
+      expect(target_movement.movement_date).to eq(Time.now.to_date)
+    end
   end
 
   context 'after create callback' do
