@@ -22,4 +22,27 @@ class Account < ActiveRecord::Base
       errors.add(:user, "can't be blank")
     end
   end
+  
+  def generate_cvu_and_alias
+    loop do
+      cvu_temporal = ""
+      22.times do 
+        digito = rand(0..9)
+        cvu_temporal = cvu_temporal + digito.to_s
+      end
+      self.cvu = cvu_temporal
+      break unless Account.exists?(cvu: self.cvu)
+    end
+
+    words = ["sol","luna","casa","golpear","hijos","penales","fallo","crear","pico","pase","diamante","diente","registro","german","terno","dado","problema","vivo","linea","puerto","comportamiento"]
+    loop do
+      words_selected = []
+      3.times do
+        random_word = words.sample
+        words_selected.push(random_word)
+      end
+      self.alias = words_selected.join('.')
+      break unless Account.exists?(alias: self.alias)
+    end
+  end
 end
