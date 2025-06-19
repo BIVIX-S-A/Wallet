@@ -95,8 +95,6 @@ h1, h3, .explanation {
     box-sizing: border-box;
 }
 
-
-
 input[type="email"],
 input[type="password"],
 input[type="number"],
@@ -120,22 +118,34 @@ input[type="text"]:focus {
     border-color: #a294f9;
 }
 
-
-input[type="submit"], input[type="button"], #login-submit, #create-account, #transfer-submit {
+#login-submit,
+#transfer-submit,
+.add-button,
+.form-container input[type="submit"] {
+    display: block;
     width: 100%;
+    max-width: 360px;
     box-sizing: border-box;
-    padding: 14px 16px;
+    padding: 14px 16px; 
     border-radius: 10px;
     font-size: 1rem;
     font-weight: 600;
-    margin: 0;
+    margin: 20px auto;
     border: none;
-    transition: background 0.2s;
-}
-
-input[type="submit"], #login-submit, #transfer-submit {
     background: #a294f9;
     color: #fff;
+    text-align: center;
+    text-decoration: none; 
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+#login-submit:hover,
+#transfer-submit:hover,
+.add-button:hover,
+.form-container input[type="submit"]:hover {
+    background: #8376f5;
+    transform: translateY(-1px);
 }
 
 input[type="submit"]:hover, #login-submit:hover, #transfer-submit:hover {
@@ -173,8 +183,8 @@ input[type="submit"]:hover, #login-submit:hover, #transfer-submit:hover {
     background: #e5e5e5;
     margin: 0 10px;
 }
- /*Transfers Menu Style*/
 
+ /*Transfers Menu Style*/
 .page-header {
     display: flex;
     align-items: center;
@@ -211,9 +221,7 @@ input[type="submit"]:hover, #login-submit:hover, #transfer-submit:hover {
     line-height: 1.2;
 }
 
-
-
- .transfer-form-container {
+.transfer-form-container {
     width: 100%;
     max-width: 400px;
     margin: 0 auto;
@@ -246,8 +254,6 @@ input[type="submit"]:hover, #login-submit:hover, #transfer-submit:hover {
     gap: 0;
     box-sizing: border-box;
 }
-
-
 
 #amount-input label {
     font-size: 1.1rem;
@@ -287,6 +293,7 @@ input[type="submit"]:hover, #login-submit:hover, #transfer-submit:hover {
     font-weight: 700;
     margin: 0;
 }
+
 .contact-book,
 .category-transfers {
     display: flex;
@@ -369,50 +376,6 @@ input[type="submit"]:hover, #login-submit:hover, #transfer-submit:hover {
 }
 
 /*End Transfers Menu*/
-input[type="email"],
-input[type="password"],
-input[type="number"],
-input[type="submit"],
-input[type="button"],
-input[type="text"] ,
-#add-contact,
-#login-email,
-#login-password,
-#login-submit,
-#create-account {
-    width: 100%;
-    max-width: 360px;
-    min-width: 180px;
-    box-sizing: border-box;
-    padding: 14px 16px;
-    border-radius: 10px;
-    font-size: 1rem;
-    margin: 0 auto 12px auto;
-    display: block;
-}
-
-
-input[type="submit"], input[type="button"], #login-submit, #transfer-submit {
-    background: #a294f9;
-    color: #fff;
-    font-weight: 600;
-    border: none;
-    cursor: pointer;
-    transition: background 0.2s;
-}
-
-input[type="submit"]:hover, input[type="button"]:hover, #login-submit:hover, #transfer-submit:hover {
-    background: #8376f5;
-}
-
-#create-account {
-    background: #eeeeee;
-    color: #222;
-}
-
-#create-account:hover {
-    background: #d6d6d6;
-}
 
 /* --- BOOT SCREEN --- */
 #boot-screen {
@@ -438,7 +401,8 @@ input[type="submit"]:hover, input[type="button"]:hover, #login-submit:hover, #tr
     animation-delay: 0.5s;
 }
 
-/* Animación de entrada */
+/* Starting animation */
+
 @keyframes fadeInLogo {
     0% {
         opacity: 0;
@@ -467,7 +431,7 @@ input[type="submit"]:hover, input[type="button"]:hover, #login-submit:hover, #tr
         margin: 16px auto;
     }
     
- input[type="email"],
+    input[type="email"],
     input[type="password"],
     input[type="number"],
     input[type="submit"],
@@ -585,26 +549,6 @@ input[type="submit"]:hover, input[type="button"]:hover, #login-submit:hover, #tr
     color: #666;
 }
 
-
-.add-button {
-    display: block;
-    width:100%;
-    max-width: 360px;
-    margin: 20px auto;
-
-    background: #8376f5;
-    color: white;
-    text-align: center;
-    padding: 14px 20px;
-    border-radius: 10px;
-    text-decoration: none;
-    font-weight: 600;
-    box-shadow: 0 4px 12px rgba(162, 148, 249, 0.3);
-}
-
-.add-button:hover {
-    background: #8376f5;
-}
 
 /* SELECTED CONTACT STYLE */
 .selected-contact-name {
