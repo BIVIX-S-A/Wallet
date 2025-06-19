@@ -87,7 +87,7 @@ class App < Sinatra::Application
   post '/register' do
     email = params[:email]
     
-    #Generating a random code
+    #Genarating a radom code
     code = rand(10**(ENV['VERIFICATION_CODE_LENGTH'].to_i - 1)...10**ENV['VERIFICATION_CODE_LENGTH'].to_i)
 
     #Storing it in session
@@ -187,7 +187,6 @@ class App < Sinatra::Application
   end
 
   get '/charge-qr' do
-    @user = User.find(session[:user_id])
     erb :'charge-qr', layout: true
   end
 
@@ -232,42 +231,21 @@ class App < Sinatra::Application
     debit_account = Account.find(debit_account_id)
     credit_account = Account.find(credit_account_id)
 
-    halt(400, "Insufficient funds.") unless debit_account.balance >= amount
-
-    # Execute the transaction within a database transaction block
     begin
-      ActiveRecord::Base.transaction do
-        # Lock the account rows to prevent race conditions
-        debit_account.lock!
-        credit_account.lock!
-        
-        # Update balance
-        debit_account.balance -= amount
-        credit_account.balance += amount
-        
-        debit_account.save!
-        credit_account.save!
-
-        # Create the transaction record
-        transaction = Transaction.create!(
+        Transaction.create!(
+          source_account_id: debit_account.id,
+          target_account_id: credit_account.id,
           amount: amount,
           category: category,
           description: "Transfer from #{debit_account.user.name} to #{credit_account.user.name}"
         )
-
-        # Create two movements (one debit, one credit)
-        Movement.create!(account: debit_account, bivix_transaction: transaction, amount: -amount, movement_date: Time.now)
-        Movement.create!(account: credit_account, bivix_transaction: transaction, amount: amount, movement_date: Time.now)
-      end
+    
     rescue => e
-      # If anything fails, set an error message and re-render the form
       @error = "Transaction failed: #{e.message}"
-      # necessary for view
       @selected_contact_account = credit_account
       return erb :'transfers', layout: true
     end
-
-    # If everything is successful, render the success view
+    
     erb :'transfer-success', layout: false
   end
 
