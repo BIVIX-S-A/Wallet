@@ -175,9 +175,9 @@ input[type="submit"]:hover, #login-submit:hover, #transfer-submit:hover {
     display: flex;
     align-items: center;
     position: relative; 
-    padding: 15px 20px; 
-    margin-bottom: 20px;
-    box-sizing: border-box; 
+    padding: 8px 16px;      
+    margin-bottom: 8px;   
+    box-sizing: border-box;
 }
 
 .header-button {
@@ -197,13 +197,14 @@ input[type="submit"]:hover, #login-submit:hover, #transfer-submit:hover {
 }
 
 #transfers-title {
-    flex-grow: 1; 
-    text-align: center; 
-    font-size: 17px;
+    flex-grow: 1;
+    text-align: center;
+    font-size: 16px;       
     font-weight: 700;
     color: #000000;
-    margin: 0; 
-    line-height: normal;
+    margin: 0;
+    padding: 0;          
+    line-height: 1.2;
 }
 
 
@@ -228,9 +229,9 @@ input[type="submit"]:hover, #login-submit:hover, #transfer-submit:hover {
 }
 
 .container-transfer {
-    background: #f6f1ff;
+    background: #f9f9f9;
     border-radius: 16px;
-    padding: 20px 4vw 16px 4vw;
+    padding: 20px 2vw 16px 2vw;
     margin: 0 auto 18px auto;
     box-shadow: 0 0 0 2px #e5e5e5;
     display: flex;
@@ -241,6 +242,8 @@ input[type="submit"]:hover, #login-submit:hover, #transfer-submit:hover {
     gap: 0;
     box-sizing: border-box;
 }
+
+
 
 #amount-input label {
     font-size: 1.1rem;
@@ -691,4 +694,120 @@ input[type="submit"]:hover, input[type="button"]:hover, #login-submit:hover, #tr
         font-size: 1.15rem;
         padding: 1.1rem 0;
     }
+
 }
+
+/* Estilos Telefono */
+
+.transfer-form-container {
+    padding: 2rem;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+#transfers-title {
+    font-size: 1.3rem;
+    text-align: center;
+    margin: 0;
+}
+
+.header-button {
+    color: #a294f9;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+label {
+    display: block;
+    font-size: 0.9rem;
+    margin-bottom: 0.2rem;
+    color: #CBD5E1;
+}
+
+#logo-bivix-layout {
+    width: 20px;
+    height: 20px;
+    vertical-align: -1px;
+    display: inline-block;
+    margin-left: 1px;
+}
+
+#debit-contactBook,
+#credit-contactBook,
+#category-transfer {
+    width: 100%;
+    padding: 12px 16px;
+    margin: 12px auto;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Estilos para escritorio (desde 900px)*/
+
+@media (min-width: 900px) {
+    .transfer-form-container {
+        max-width: 900px;
+        margin: 2rem auto 5rem auto;
+        background: #fafaff;
+        border-radius: 18px;
+        box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+        padding: 3rem 4rem;
+        border: 1px solid #CBD5E1;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        font-size: 1.15rem;
+    }
+
+    #amount-input input {
+        font-size: 1.5rem;
+        padding: 1rem;
+        width: 100%;
+        border-radius: 8px;
+    }
+
+    #balance-transfer-amount {
+        font-size: 1.3rem;
+        font-weight: 500;
+    }
+
+    #debit-contactBook,
+    #credit-contactBook,
+    #category-transfer {
+        max-width: 600px;
+        padding: 16px 20px;
+        border-radius: 10px;
+        font-size: 1.15rem;
+    }
+
+    .button-link {
+        padding: 0.6rem 1.2rem;
+        font-size: 1rem;
+        border-radius: 6px;
+        background-color: #e6e6e6;
+        text-decoration: none;
+        color: #333;
+    }
+
+    #transfer-submit {
+        font-size: 1.2rem;
+        padding: 1rem 2rem;
+        border-radius: 8px;
+        background-color: #8376f5;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+
+    #transfer-submit:hover {
+        background-color: #8376f5;
+    }
+}
+
+
+
