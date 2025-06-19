@@ -95,10 +95,10 @@ h1, h3, .explanation {
     box-sizing: border-box;
 }
 
-
 input[type="email"],
 input[type="password"],
-input[type="number"] {
+input[type="number"],
+input[type="text"]  {
     width: 100%;
     box-sizing: border-box;
     padding: 14px 16px;
@@ -113,25 +113,39 @@ input[type="number"] {
 
 input[type="email"]:focus,
 input[type="password"]:focus,
-input[type="number"]:focus {
+input[type="number"]:focus,
+input[type="text"]:focus {
     border-color: #a294f9;
 }
 
-input[type="submit"], input[type="button"], #login-submit, #create-account, #transfer-submit {
+#login-submit,
+#transfer-submit,
+.add-button,
+.form-container input[type="submit"] {
+    display: block;
     width: 100%;
+    max-width: 360px;
     box-sizing: border-box;
-    padding: 14px 16px;
+    padding: 14px 16px; 
     border-radius: 10px;
     font-size: 1rem;
     font-weight: 600;
-    margin: 0;
+    margin: 20px auto;
     border: none;
-    transition: background 0.2s;
-}
-
-input[type="submit"], #login-submit, #transfer-submit {
     background: #a294f9;
     color: #fff;
+    text-align: center;
+    text-decoration: none; 
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+#login-submit:hover,
+#transfer-submit:hover,
+.add-button:hover,
+.form-container input[type="submit"]:hover {
+    background: #8376f5;
+    transform: translateY(-1px);
 }
 
 input[type="submit"]:hover, #login-submit:hover, #transfer-submit:hover {
@@ -169,15 +183,15 @@ input[type="submit"]:hover, #login-submit:hover, #transfer-submit:hover {
     background: #e5e5e5;
     margin: 0 10px;
 }
- /*Transfers Menu Style*/
 
+ /*Transfers Menu Style*/
 .page-header {
     display: flex;
     align-items: center;
     position: relative; 
-    padding: 15px 20px; 
-    margin-bottom: 20px;
-    box-sizing: border-box; 
+    padding: 8px 16px;      
+    margin-bottom: 8px;   
+    box-sizing: border-box;
 }
 
 .header-button {
@@ -197,18 +211,17 @@ input[type="submit"]:hover, #login-submit:hover, #transfer-submit:hover {
 }
 
 #transfers-title {
-    flex-grow: 1; 
-    text-align: center; 
-    font-size: 17px;
+    flex-grow: 1;
+    text-align: center;
+    font-size: 16px;       
     font-weight: 700;
     color: #000000;
-    margin: 0; 
-    line-height: normal;
+    margin: 0;
+    padding: 0;          
+    line-height: 1.2;
 }
 
-
-
- .transfer-form-container {
+.transfer-form-container {
     width: 100%;
     max-width: 400px;
     margin: 0 auto;
@@ -228,9 +241,9 @@ input[type="submit"]:hover, #login-submit:hover, #transfer-submit:hover {
 }
 
 .container-transfer {
-    background: #f6f1ff;
+    background: #f9f9f9;
     border-radius: 16px;
-    padding: 20px 4vw 16px 4vw;
+    padding: 20px 2vw 16px 2vw;
     margin: 0 auto 18px auto;
     box-shadow: 0 0 0 2px #e5e5e5;
     display: flex;
@@ -280,10 +293,12 @@ input[type="submit"]:hover, #login-submit:hover, #transfer-submit:hover {
     font-weight: 700;
     margin: 0;
 }
+
 .contact-book,
 .category-transfers {
     display: flex;
     flex-direction: row;
+    gap: 16px; 
     align-items: center;
     justify-content: space-between;
     background: #fff;
@@ -308,6 +323,7 @@ input[type="submit"]:hover, #login-submit:hover, #transfer-submit:hover {
     text-align: left;
     letter-spacing: 0.2px;
     box-sizing: border-box;
+    flex-shrink: 0;
 }
 
 .button-link {
@@ -329,6 +345,26 @@ input[type="submit"]:hover, #login-submit:hover, #transfer-submit:hover {
     color: #8376f5;
     background: none;
 }
+
+#category-transfer .category-dropdown {
+    flex-grow: 1;
+    padding: 8px;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    background-color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #333;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23333' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+    margin-right: 8px;
+}
+
 
 .submit-button-transfer {
     width: 100%;
@@ -360,47 +396,6 @@ input[type="submit"]:hover, #login-submit:hover, #transfer-submit:hover {
 }
 
 /*End Transfers Menu*/
-input[type="email"],
-input[type="password"],
-input[type="number"],
-input[type="submit"],
-input[type="button"],
-#login-email,
-#login-password,
-#login-submit,
-#create-account {
-    width: 100%;
-    max-width: 360px;
-    min-width: 180px;
-    box-sizing: border-box;
-    padding: 14px 16px;
-    border-radius: 10px;
-    font-size: 1rem;
-    margin: 0 auto 12px auto;
-    display: block;
-}
-
-input[type="submit"], input[type="button"], #login-submit, #transfer-submit {
-    background: #a294f9;
-    color: #fff;
-    font-weight: 600;
-    border: none;
-    cursor: pointer;
-    transition: background 0.2s;
-}
-
-input[type="submit"]:hover, input[type="button"]:hover, #login-submit:hover, #transfer-submit:hover {
-    background: #8376f5;
-}
-
-#create-account {
-    background: #eeeeee;
-    color: #222;
-}
-
-#create-account:hover {
-    background: #d6d6d6;
-}
 
 /* --- BOOT SCREEN --- */
 #boot-screen {
@@ -426,7 +421,8 @@ input[type="submit"]:hover, input[type="button"]:hover, #login-submit:hover, #tr
     animation-delay: 0.5s;
 }
 
-/* Animación de entrada */
+/* Starting animation */
+
 @keyframes fadeInLogo {
     0% {
         opacity: 0;
@@ -460,6 +456,8 @@ input[type="submit"]:hover, input[type="button"]:hover, #login-submit:hover, #tr
     input[type="number"],
     input[type="submit"],
     input[type="button"],
+    input[type="text"],
+    #add-contact, 
     #login-email,
     #login-password,
     #login-submit,
@@ -469,6 +467,7 @@ input[type="submit"]:hover, input[type="button"]:hover, #login-submit:hover, #tr
         min-width: 0;
         font-size: 1rem;
     }
+
     .container-transfer {
         padding: 20px 4vw 16px 4vw;
         max-width: 100vw;
@@ -490,6 +489,115 @@ input[type="submit"]:hover, input[type="button"]:hover, #login-submit:hover, #tr
     }
 }
 
+/* SEARCH BAR - ADD CONTACT */
+.search-container {
+    width: 100%;
+    max-width: 360px;
+    margin: 0 auto 20px;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+#search {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1.5px solid #e5e5e5;
+    border-radius: 10px;
+    background: #fafaff;
+    font-size: 1rem;
+    box-sizing: border-box;
+    outline: none;
+}
+
+#search:focus {
+    border-color: #a294f9;
+}
+
+#search::placeholder {
+    color: #999;
+    font-style: italic;
+}
+
+/* CONTACT STYLES */
+.contact-list {
+    width: 100%;
+    max-width: 360px;
+    margin: 0 auto 20px auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.contact-item {
+    background: #fff;
+    border-bottom: 1px solid #f0f0f0;
+    margin-bottom: 1px;
+}
+
+.contact-item a {
+    display: block;
+    padding: 16px 12px;
+    text-decoration: none;
+    color: inherit;
+    transition: background-color 0.2s ease;
+}
+
+.contact-item a:hover {
+    background-color: #f8f8f8;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.contact-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #222;
+}
+
+.contact-alias {
+    font-size: 0.9rem;
+    color: #666;
+    font-style: italic;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: #666;
+}
+
+
+/* SELECTED CONTACT STYLE */
+.selected-contact-name {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    color: #333;
+    
+    flex: 1;
+    min-width: 0;
+}
+
+.change-link {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: #a294f9;
+    text-decoration: none;
+}
+
+.change-link:hover {
+    text-decoration: underline;
+}
+
+.contact-full-name {
+    white-space: nowrap;     
+    overflow: hidden;        
+    text-overflow: ellipsis; 
+}
 
 /* DASHBOARD */
 .container-balance {
@@ -691,4 +799,120 @@ input[type="submit"]:hover, input[type="button"]:hover, #login-submit:hover, #tr
         font-size: 1.15rem;
         padding: 1.1rem 0;
     }
+
 }
+
+/* Estilos Telefono */
+
+.transfer-form-container {
+    padding: 2rem;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+#transfers-title {
+    font-size: 1.3rem;
+    text-align: center;
+    margin: 0;
+}
+
+.header-button {
+    color: #a294f9;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+label {
+    display: block;
+    font-size: 0.9rem;
+    margin-bottom: 0.2rem;
+    color: #CBD5E1;
+}
+
+#logo-bivix-layout {
+    width: 20px;
+    height: 20px;
+    vertical-align: -1px;
+    display: inline-block;
+    margin-left: 1px;
+}
+
+#debit-contactBook,
+#credit-contactBook,
+#category-transfer {
+    width: 100%;
+    padding: 12px 16px;
+    margin: 12px auto;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Estilos para escritorio (desde 900px)*/
+
+@media (min-width: 900px) {
+    .transfer-form-container {
+        max-width: 900px;
+        margin: 2rem auto 5rem auto;
+        background: #fafaff;
+        border-radius: 18px;
+        box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+        padding: 3rem 4rem;
+        border: 1px solid #CBD5E1;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        font-size: 1.15rem;
+    }
+
+    #amount-input input {
+        font-size: 1.5rem;
+        padding: 1rem;
+        width: 100%;
+        border-radius: 8px;
+    }
+
+    #balance-transfer-amount {
+        font-size: 1.3rem;
+        font-weight: 500;
+    }
+
+    #debit-contactBook,
+    #credit-contactBook,
+    #category-transfer {
+        max-width: 600px;
+        padding: 16px 20px;
+        border-radius: 10px;
+        font-size: 1.15rem;
+    }
+
+    .button-link {
+        padding: 0.6rem 1.2rem;
+        font-size: 1rem;
+        border-radius: 6px;
+        background-color: #e6e6e6;
+        text-decoration: none;
+        color: #333;
+    }
+
+    #transfer-submit {
+        font-size: 1.2rem;
+        padding: 1rem 2rem;
+        border-radius: 8px;
+        background-color: #8376f5;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+
+    #transfer-submit:hover {
+        background-color: #8376f5;
+    }
+}
+
+
+

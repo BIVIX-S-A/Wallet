@@ -19,3 +19,15 @@ docker compose exec app env RACK_ENV=test bundle exec rake db:migrate
 
 Correr los test
 docker compose exec app bundle exec rspec
+
+
+Cuentas útiles para testing
+email: payaso@yopmail.com
+password: 123456
+
+
+email: payaso2@yopmail.com
+password: 123456
+
+email: mago1@yopmail.com
+password: 123456

@@ -18,16 +18,21 @@
         <h3 id="contacts-title">My Contacts</h3>
     </header> 
 
+    <div class="search-container">
+        <input type="text" id="search" placeholder="Search contacts...">
+    </div>
+
+
     <div class="contact-list">
         <% if @contacts.any? %>
             <% @contacts.each do |contact| %>   
-                <div class="contact-item">
+                <div class="contact-item" data-search="<%= (contact.contact_account.user.name || '').downcase %> <%= (contact.contact_account.user.surname || '').downcase %> <%= (contact.custom_name || '').downcase %>">
                     <a href="/transfers?contact_id=<%= contact.contact_account.id %>">
                         <div class="contact-info">
                             <span class="contact-name">
-                                <%= contact.contact_account.user.name %> <%= contact.contact_account.user.surname %>
+                                <%= (contact.contact_account.user.name || '') %> <%= (contact.contact_account.user.surname || '') %>
                             </span>
-                            <span class="contact-alias">(<%= contact.custom_name %>)</span>
+                            <span class="contact-alias">(<%= (contact.custom_name || '') %>)</span>
                         </div>
                     </a>
                 </div>
@@ -39,8 +44,23 @@
         <% end %>
     </div>
 
+    <script>
+        document.getElementById('search').addEventListener('input', function() {
+            const search = this.value.toLowerCase();
+            const contacts = document.querySelectorAll('.contact-item');
+            
+            contacts.forEach(function(contact) {
+                const text = contact.getAttribute('data-search') || '';
+                if (text.includes(search)) {
+                    contact.style.display = 'block';
+                } else {
+                    contact.style.display = 'none';
+                }
+            });
+        });
+    </script>
 
-    <a href="/add-contact" class="header-button add-button">
+    <a href="/add-contact" class="add-button">
             ADD NEW
     </a>
 

@@ -21,6 +21,12 @@
     <div class="transfer-form-container">
         <form method="post" id="transfer-form" action="/transfer-success">
             
+        <input type="hidden" name="debit_account_id" value="<%= @user.account.id %>">
+            <% if @selected_contact_account %>
+                <input type="hidden" name="credit_account_id" value="<%= @selected_contact_account.id %>">
+            <% end %>
+
+
             <div class ="container-transfer">
                 <div id = "amount-input"> 
                     <label for="amount">Total</label>
@@ -33,20 +39,36 @@
                 
             </div>   
             
-            <div id="debit-contactBook" class="contact-book" >
+            <div id="debit-contactBook" class="contact-book">
                 <label for="debitAccount-select">Debit Account</label> 
-                <a href="/select-contact" class="button-link">Select</a>
+                <div class="selected-contact-name">
+                    <%= @user.name %> <%= @user.surname %> (You)
+                </div>
             </div>
     
-            <div id="credit-contactBook" class="contact-book" >
+          <div id="credit-contactBook" class="contact-book">
                 <label for="creditAccount-select">Credit Account</label> 
-                <a href="/select-contact" class="button-link">Select</a>
+                <% if @selected_contact_account %>
+                    <div class="selected-contact-name">
+                        <span class="contact-full-name"><%= @selected_contact_account.user.name %> <%= @selected_contact_account.user.surname %></span>
+                        <a href="/select-contact" class="change-link">(Change)</a>
+                    </div>
+                <% else %>
+                    <a href="/select-contact" class="button-link">Select</a>
+                <% end %>
             </div>
 
 
-              <div id="category-transfer" class="category-transfers" >
-                <label for="category-select">Category</label> 
-                <a href="/select-category" class="button-link">Select</a>     
+             <div id="category-transfer" class="category-transfers">
+                <label for="category-select">Category</label>
+                <select id="category-select" name="category" class="category-dropdown">
+                    <option value="others">Others</option>
+                    <option value="food">Food & Drinks</option>
+                    <option value="transport">Transport</option>
+                    <option value="shopping">Shopping</option>
+                    <option value="bills">Bills & Utilities</option>
+                    <option value="entertainment">Entertainment</option>
+                </select>
             </div>
             
             <div class="submit-button-transfer">
