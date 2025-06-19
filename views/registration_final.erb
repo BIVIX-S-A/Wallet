@@ -11,27 +11,5 @@
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required>
 
-        <button type="button" id="verify-button">Verify Code</button>
-    </div>
-
-    <div id="verification-container" style="display: none;">
-        <h2>Verification</h2>
-        <label for="verification-code">Enter Verification Code:</label>
-        <input type="text" id="verification-code" name="verification_code" required>
-        
         <button type="submit">Complete Registration</button>
     </div>
-</form>
-
-<script>
-    document.getElementById('verify-button').addEventListener('click', function() {
-        const email = document.getElementById('email').value;
-        if (email) {
-            alert('Verification code sent to ' + email);
-            document.getElementById('user-info-container').style.display = 'none';
-            document.getElementById('verification-container').style.display = 'block';
-        } else {
-            alert('Please enter your email first.');
-        }
-    });
-</script>
