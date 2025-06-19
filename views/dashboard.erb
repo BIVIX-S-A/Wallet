@@ -34,24 +34,30 @@
             </a>
         </section>
 
-        <section class="transactions">
-            <h3>Latest Transactions</h3>
-            <ul>
-                <% @movements.each do |mov| %>
-                    <% amount = mov.bivix_transaction.amount %>
-                    <% is_positive = amount > 0 %>
-                    <li>
-                        <span class="icon"><%= is_positive ? "💵" : "🛒" %></span>
-                        <span class="label">
-                            <%= is_positive ? "Transfer Received" : "Payment" %>
-                        </span>
-                        <span class="amount <%= is_positive ? "positive" : "negative" %>">
-                            <%= is_positive ? "+" : "-" %><%= '%.2f' % amount.abs %>
-                        </span>
-                    </li>
-                <% end %>
-            </ul>
-        </section>
+<section class="transactions">
+  <h3>Latest Transactions</h3>
+  <ul>
+    <% @movements.each do |mov| %>
+      <% amount = mov.amount %>
+      <% is_positive = amount >= 0 %>
+      <% transaction = mov.bivix_transaction %>
+      <% if transaction %>
+        <% other_account = (mov.account_id == transaction.source_account_id) ? transaction.target_account : transaction.source_account %>
+      <% end %>
+
+      <li>
+        <span class="icon"><%= is_positive ? "💵" : "🛒" %></span>
+        
+        <span class="label">
+          <%= is_positive ? "Transfer Received" : "Transfer Sent" %>
+        </span>
+        <span class="amount <%= is_positive ? "positive" : "negative" %>">
+          <%= is_positive ? "+" : "-" %><%= '%.2f' % amount.abs %>
+        </span>
+      </li>
+    <% end %>
+  </ul>
+</section>
     
   </main>
 

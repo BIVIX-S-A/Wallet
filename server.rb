@@ -155,12 +155,15 @@ class App < Sinatra::Application
     end
   end
 
+
   get '/dashboard' do
     halt(redirect('/login')) unless session[:user_id]
     @user = User.find(session[:user_id])
-    @movements = Movement.includes(:account, :bivix_transaction)
-                       .order(created_at: :desc)
-                       .limit(10)
+    @account = @user.account
+    @movements = @account.movements       
+                       .includes(bivix_transaction: [:source_account, :target_account])
+                       .order(id: :desc)
+                       .limit(100)
     erb :'dashboard', layout: true
   end
 
