@@ -156,7 +156,7 @@ class App < Sinatra::Application
   end
 
   get '/dashboard' do
-    halt(redirect('/')) unless session[:user_id]
+    halt(redirect('/login')) unless session[:user_id]
     @user = User.find(session[:user_id])
     @movements = Movement.includes(:account, :bivix_transaction)
                        .order(created_at: :desc)
@@ -178,31 +178,35 @@ class App < Sinatra::Application
   end
 
   get '/card' do
+    halt(redirect('/login')) unless session[:user_id]
     erb :'card', layout: true
   end
 
   get '/savings' do
+    halt(redirect('/login')) unless session[:user_id]
     erb :'savings', layout: true
   end
 
   get '/charge-link' do
+    halt(redirect('/login')) unless session[:user_id]
     erb :'charge-link', layout: true
   end
 
   get '/charge-qr' do
+    halt(redirect('/login')) unless session[:user_id]
     @user = User.find(session[:user_id])
     erb :'charge-qr', layout: true
   end
 
   get '/history' do
-    halt(redirect('/')) unless session[:user_id]
+    halt(redirect('/login')) unless session[:user_id]
     @user = User.find(session[:user_id])
     @movements = @user.account.movements.order(created_at: :desc)
     erb :'history', layout: true
   end
 
   get '/pay-qr' do
-    halt(redirect('/')) unless session[:user_id]
+    halt(redirect('/login')) unless session[:user_id]
     @user = User.find(session[:user_id])
     erb :'pay-qr', layout: true
   end
