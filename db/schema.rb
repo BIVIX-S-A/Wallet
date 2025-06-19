@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_06_16_201306) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_19_051306) do
   create_table "accounts", force: :cascade do |t|
     t.decimal "balance", precision: 11, scale: 2, default: "0.0", null: false
     t.string "cvu"
@@ -46,11 +46,14 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_16_201306) do
   end
 
   create_table "movements", force: :cascade do |t|
-    t.integer "movement_id"
     t.decimal "amount", precision: 11, scale: 2
     t.date "movement_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "account_id", null: false
+    t.integer "transaction_id", null: false
+    t.index ["account_id"], name: "index_movements_on_account_id"
+    t.index ["transaction_id"], name: "index_movements_on_transaction_id"
   end
 
   create_table "transactions", force: :cascade do |t|
@@ -59,6 +62,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_16_201306) do
     t.integer "target_account_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "category"
+    t.string "description"
     t.index ["source_account_id"], name: "index_transactions_on_source_account_id"
     t.index ["target_account_id"], name: "index_transactions_on_target_account_id"
   end
@@ -82,6 +87,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_16_201306) do
   add_foreign_key "cards", "accounts"
   add_foreign_key "contacts", "accounts", column: "contact_account_id"
   add_foreign_key "contacts", "accounts", column: "owner_account_id"
+  add_foreign_key "movements", "accounts"
+  add_foreign_key "movements", "transactions"
   add_foreign_key "transactions", "accounts", column: "source_account_id"
   add_foreign_key "transactions", "accounts", column: "target_account_id"
 end

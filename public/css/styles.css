@@ -395,6 +395,84 @@ input[type="submit"]:hover, #login-submit:hover, #transfer-submit:hover {
     background: #8376f5;
 }
 
+
+/* Style for transfer status (Success/Error) */
+.status-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.status-icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 24px;
+}
+
+.status-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #222;
+    margin: 0 0 12px 0;
+}
+
+.status-message {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 300px;
+    margin: 0 0 32px 0;
+}
+
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 16px; 
+    width: 100%;
+    max-width: 300px;
+    align-items: stretch; 
+}
+
+.action-buttons .button-primary,
+.action-buttons .button-secondary {
+    display: inline-block;
+    padding: 14px 16px;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.action-buttons .button-primary {
+    background-color: #a294f9;
+    color: #fff;
+    border-color: #a294f9;
+}
+
+.action-buttons .button-primary:hover {
+    background-color: #8376f5;
+    border-color: #8376f5;
+}
+
+.action-buttons .button-secondary {
+    background-color: #fff;
+    color: #a294f9;
+    border-color: #a294f9;
+}
+
+.action-buttons .button-secondary:hover {
+    background-color: #f6f1ff;
+    color: #8376f5;
+    border-color: #8376f5;
+}
+
 /*End Transfers Menu*/
 
 /* --- BOOT SCREEN --- */
@@ -598,6 +676,9 @@ input[type="submit"]:hover, #login-submit:hover, #transfer-submit:hover {
     overflow: hidden;        
     text-overflow: ellipsis; 
 }
+
+
+
 
 /* DASHBOARD */
 .container-balance {

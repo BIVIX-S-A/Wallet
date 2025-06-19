@@ -212,6 +212,64 @@ class App < Sinatra::Application
     erb :'select-contact', layout: false  
   end
 
+  post '/transfer-success' do
+
+    halt(redirect('/login')) unless session[:user_id]
+    @user = User.find(session[:user_id])
+
+    #Get parameters from the form
+    amount = params[:amount].to_f
+    debit_account_id = params[:debit_account_id].to_i
+    credit_account_id = params[:credit_account_id].to_i
+    category = params[:category]
+
+    # Critical validations
+    halt(403, "Forbidden: You can only transfer from your own account.") unless @user.account.id == debit_account_id
+    halt(400, "Invalid amount.") unless amount > 0
+    halt(400, "No recipient selected.") unless credit_account_id > 0
+
+    debit_account = Account.find(debit_account_id)
+    credit_account = Account.find(credit_account_id)
+
+    halt(400, "Insufficient funds.") unless debit_account.balance >= amount
+
+    # Execute the transaction within a database transaction block
+    begin
+      ActiveRecord::Base.transaction do
+        # Lock the account rows to prevent race conditions
+        debit_account.lock!
+        credit_account.lock!
+        
+        # Update balance
+        debit_account.balance -= amount
+        credit_account.balance += amount
+        
+        debit_account.save!
+        credit_account.save!
+
+        # Create the transaction record
+        transaction = Transaction.create!(
+          amount: amount,
+          category: category,
+          description: "Transfer from #{debit_account.user.name} to #{credit_account.user.name}"
+        )
+
+        # Create two movements (one debit, one credit)
+        Movement.create!(account: debit_account, bivix_transaction: transaction, amount: -amount, movement_date: Time.now)
+        Movement.create!(account: credit_account, bivix_transaction: transaction, amount: amount, movement_date: Time.now)
+      end
+    rescue => e
+      # If anything fails, set an error message and re-render the form
+      @error = "Transaction failed: #{e.message}"
+      # necessary for view
+      @selected_contact_account = credit_account
+      return erb :'transfers', layout: true
+    end
+
+    # 5. If everything is successful, render the success view
+    erb :'transfer-success', layout: false
+  end
+
   get '/add-contact' do
     halt(redirect('/login')) unless session[:user_id]
     erb :'add-contact', layout: false
