@@ -14,3 +14,12 @@ docker compose exec app bundle exec rake db:create_migration NAME=#nombre_migrac
 Correr la migracion
 docker compose exec app bundle exec rake db:migrate
 
+
+Accounts Creates
+
+name: payaso@yopmail.com
+password: 123456
+
+
+name: payaso2@yopmail.com
+password: 123456
