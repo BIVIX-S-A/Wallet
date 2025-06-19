@@ -158,6 +158,9 @@ class App < Sinatra::Application
   get '/dashboard' do
     halt(redirect('/')) unless session[:user_id]
     @user = User.find(session[:user_id])
+    @movements = Movement.includes(:account, :bivix_transaction)
+                       .order(created_at: :desc)
+                       .limit(10)
     erb :'dashboard', layout: true
   end
 

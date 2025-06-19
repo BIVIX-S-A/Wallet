@@ -37,34 +37,23 @@
         <section class="transactions">
             <h3>Latest Transactions</h3>
             <ul>
-                <li>
-                    <span class="icon">💵</span> 
-                    <span class="label">Transfer Received </span> 
-                    <span class="amount positive">+3580</span>
-                </li>
-                <li>
-                    <span class="icon">🛒</span> 
-                    <span class="label"> Payment </span>
-                    <span class="amount negative">-154.27</span>
-                </li>
-                <li>
-                    <span class="icon">💵</span> 
-                    <span class="label"> Transfer Received </span>
-                    <span class="amount positive">+798</span>
-                </li>
-                <li>
-                    <span class="icon">🛒</span> 
-                    <span class="label"> Payment </span>
-                    <span class="amount negative">-336.18</span>
-                </li>
-                <li>
-                    <span class="icon">🛒</span> 
-                    <span class="label"> Payment </span>
-                    <span class="amount negative">-10.50</span>
-                </li>
+                <% @movements.each do |mov| %>
+                    <% amount = mov.bivix_transaction.amount %>
+                    <% is_positive = amount > 0 %>
+                    <li>
+                        <span class="icon"><%= is_positive ? "💵" : "🛒" %></span>
+                        <span class="label">
+                            <%= is_positive ? "Transfer Received" : "Payment" %>
+                        </span>
+                        <span class="amount <%= is_positive ? "positive" : "negative" %>">
+                            <%= is_positive ? "+" : "-" %><%= '%.2f' % amount.abs %>
+                        </span>
+                    </li>
+                <% end %>
             </ul>
-        </section>
-    </main>
+        </section>
+    
+  </main>
 
     <nav class="bottom-navigation-bar">
         <a class="nav-item" href="/history" >
