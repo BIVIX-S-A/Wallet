@@ -4,7 +4,10 @@ class Transaction < ActiveRecord::Base
   
   validates :source_account, presence: true
   validates :target_account, presence: true
+  validates :amount, presence: true, numericality: { greater_than: 0 }
   validate :check_balance
+  validate :different_accounts
+  validate :has_amount
 
   after_create :transfer_balance
 
@@ -30,8 +33,20 @@ class Transaction < ActiveRecord::Base
   private
 
   def check_balance
-    if source_account && source_account.balance < amount
+    if source_account && !amount.nil? && source_account.balance < amount
       errors.add(:base, "The balance isn't enough for this transaction")
+    end
+  end
+
+  def different_accounts
+    if source_account.present? && target_account.present? && source_account.id == target_account.id
+      errors.add(:base, "Source and target accounts must exist and must be different")
+    end
+  end
+
+  def has_amount
+    if amount.nil? || amount <= 0
+      errors.add(:amount, "Amount must be greater than 0")
     end
   end
 end
