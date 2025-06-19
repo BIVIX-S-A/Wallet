@@ -64,7 +64,20 @@ class App < Sinatra::Application
   get '/transfers' do
     halt(redirect('/')) unless session[:user_id]
     @user = User.find(session[:user_id])
+
+    if params[:contact_id]
+
+      contact = Contact.find_by(contact_account_id: params[:contact_id],owner_account_id: @user.account.id)
+      #Security
+      if contact
+        @selected_contact_account = contact.contact_account
+      else
+        @selected_contact_account = nil 
+      end
+    end
+    
     erb :'transfers', layout: true
+
   end
 
   get '/register' do
