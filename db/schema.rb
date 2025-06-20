@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_06_19_051306) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_20_050513) do
   create_table "accounts", force: :cascade do |t|
     t.decimal "balance", precision: 11, scale: 2, default: "0.0", null: false
     t.string "cvu"
@@ -76,8 +76,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_19_051306) do
     t.string "phone"
     t.string "address"
     t.string "email"
-    t.integer "marital_status"
-    t.boolean "legal_entity"
+    t.string "marital_status"
+    t.string "legal_entity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
