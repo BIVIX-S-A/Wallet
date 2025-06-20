@@ -1086,3 +1086,69 @@ label {
     border-radius: 4px;
     font-size: 1rem;
 }
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 14px 18px;
+  border-bottom: 1px solid #eee;
+  font-family: 'Segoe UI', 'Inter', sans-serif;
+  background: #fff;
+  transition: background 0.18s;
+  font-size: 1.08rem;
+}
+
+li:last-child {
+  border-bottom: none;
+}
+
+li:hover {
+  background: #f6f1ff;
+}
+
+.icon {
+  margin-right: 8px;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  filter: drop-shadow(0 1px 2px #e5e5e5);
+}
+
+.label {
+  flex: 1;
+  font-weight: 500;
+  color: #333;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.amount.positive {
+  color: #2ecc40;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.amount.negative {
+  color: #e74c3c;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+@media (max-width: 600px) {
+  li {
+    font-size: 0.98rem;
+    padding: 10px 8px;
+    gap: 0.7rem;
+  }
+  .icon {
+    font-size: 1.2rem;
+  }
+}
