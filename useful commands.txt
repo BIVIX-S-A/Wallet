@@ -46,3 +46,6 @@ cvu: 8588303922066482463601
 
 email: payaso5@yopmail.com (with card)
 password : 123456 
+
+email: marama@yopmail.com
+password: 123456
