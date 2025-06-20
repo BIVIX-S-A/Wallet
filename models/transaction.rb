@@ -9,24 +9,27 @@ class Transaction < ActiveRecord::Base
   validate :different_accounts
   validate :has_amount
 
-  after_create :transfer_balance
-
   private
 
-  def transfer_balance
-    #Making all in a db transaction for avoid inconsistencies
+  def self.create_transfer(source_account:, target_account:, amount:, category:, description:)
     ActiveRecord::Base.transaction do
-      source_account.lock!
-      target_account.lock!
-      
-      source_account.balance -= amount
-      source_account.save!
 
-      target_account.balance += amount
-      target_account.save!
+      transaction = create!(
+        source_account: source_account,
+        target_account: target_account,
+        amount: amount,
+        category: category,
+        description: description
+      )
 
-      Movement.create!(account: source_account, bivix_transaction: self, amount: -amount, movement_date: Time.now)
-      Movement.create!(account: target_account, bivix_transaction: self, amount: amount, movement_date: Time.now)
+      source_account.update!(balance: source_account.balance - amount)
+      target_account.update!(balance: target_account.balance + amount)
+
+      Movement.create!(account: source_account, bivix_transaction: transaction, amount: -amount, movement_date: Time.now)
+      Movement.create!(account: target_account, bivix_transaction: transaction, amount: amount, movement_date: Time.now)
+
+      transaction 
+
     end
   end
 

@@ -33,3 +33,58 @@ password: 123456
 
 email: mago1@yopmail.com
 password: 123456
+
+
+
+irb(main):010:-> puts "Done."
+D, [2025-06-20T00:18:11.906863 #17] DEBUG -- :   Account Load (0.3ms)  SELECT "accounts".* FROM "accounts" WHERE "accounts"."alias" IS NULL ORDER BY "accounts"."id" ASC LIMIT ?  [["LIMIT", 1000]]
+D, [2025-06-20T00:18:11.914294 #17] DEBUG -- :   Account Exists? (0.1ms)  SELECT 1 AS one FROM "accounts" WHERE "accounts"."cvu" = ? LIMIT ?  [["cvu", "0119020315643575861004"], ["LIMIT", 1]]
+D, [2025-06-20T00:18:11.915145 #17] DEBUG -- :   Account Exists? (0.2ms)  SELECT 1 AS one FROM "accounts" WHERE "accounts"."alias" = ? LIMIT ?  [["alias", "luna.terno.linea"], ["LIMIT", 1]]
+D, [2025-06-20T00:18:11.921695 #17] DEBUG -- :   TRANSACTION (0.2ms)  BEGIN immediate TRANSACTION
+D, [2025-06-20T00:18:11.930227 #17] DEBUG -- :   User Load (0.2ms)  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?  [["id", 2], ["LIMIT", 1]]
+D, [2025-06-20T00:18:11.946172 #17] DEBUG -- :   Account Update (0.4ms)  UPDATE "accounts" SET "cvu" = ?, "alias" = ?, "updated_at" = ? WHERE "accounts"."id" = ?  [["cvu", "0119020315643575861004"], ["alias", "luna.terno.linea"], ["updated_at", "2025-06-20 00:18:11.944585"], ["id", 2]]
+D, [2025-06-20T00:18:11.946821 #17] DEBUG -- :   TRANSACTION (0.2ms)  COMMIT TRANSACTION
+Updated account for user: fevesnaver@gmail.com
+D, [2025-06-20T00:18:11.948528 #17] DEBUG -- :   Account Exists? (0.5ms)  SELECT 1 AS one FROM "accounts" WHERE "accounts"."cvu" = ? LIMIT ?  [["cvu", "2900267972450854866776"], ["LIMIT", 1]]
+D, [2025-06-20T00:18:11.949293 #17] DEBUG -- :   Account Exists? (0.1ms)  SELECT 1 AS one FROM "accounts" WHERE "accounts"."alias" = ? LIMIT ?  [["alias", "linea.pase.hijos"], ["LIMIT", 1]]
+D, [2025-06-20T00:18:11.950187 #17] DEBUG -- :   TRANSACTION (0.0ms)  BEGIN immediate TRANSACTION
+D, [2025-06-20T00:18:11.950358 #17] DEBUG -- :   User Load (0.2ms)  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?  [["id", 3], ["LIMIT", 1]]
+D, [2025-06-20T00:18:11.951255 #17] DEBUG -- :   Account Update (0.1ms)  UPDATE "accounts" SET "cvu" = ?, "alias" = ?, "updated_at" = ? WHERE "accounts"."id" = ?  [["cvu", "2900267972450854866776"], ["alias", "linea.pase.hijos"], ["updated_at", "2025-06-20 00:18:11.950676"], ["id", 3]]
+D, [2025-06-20T00:18:11.951812 #17] DEBUG -- :   TRANSACTION (0.2ms)  COMMIT TRANSACTION
+Updated account for user: payaso@yopmail.com
+D, [2025-06-20T00:18:11.952951 #17] DEBUG -- :   Account Exists? (0.2ms)  SELECT 1 AS one FROM "accounts" WHERE "accounts"."cvu" = ? LIMIT ?  [["cvu", "6659304068158413312514"], ["LIMIT", 1]]
+D, [2025-06-20T00:18:11.953565 #17] DEBUG -- :   Account Exists? (0.1ms)  SELECT 1 AS one FROM "accounts" WHERE "accounts"."alias" = ? LIMIT ?  [["alias", "dado.pase.pico"], ["LIMIT", 1]]
+D, [2025-06-20T00:18:11.954478 #17] DEBUG -- :   TRANSACTION (0.0ms)  BEGIN immediate TRANSACTION
+D, [2025-06-20T00:18:11.954704 #17] DEBUG -- :   User Load (0.3ms)  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?  [["id", 4], ["LIMIT", 1]]
+D, [2025-06-20T00:18:11.955813 #17] DEBUG -- :   Account Update (0.1ms)  UPDATE "accounts" SET "cvu" = ?, "alias" = ?, "updated_at" = ? WHERE "accounts"."id" = ?  [["cvu", "6659304068158413312514"], ["alias", "dado.pase.pico"], ["updated_at", "2025-06-20 00:18:11.955087"], ["id", 4]]
+D, [2025-06-20T00:18:11.956135 #17] DEBUG -- :   TRANSACTION (0.1ms)  COMMIT TRANSACTION
+Updated account for user: franbarosco@gmail.com
+D, [2025-06-20T00:18:11.957051 #17] DEBUG -- :   Account Exists? (0.1ms)  SELECT 1 AS one FROM "accounts" WHERE "accounts"."cvu" = ? LIMIT ?  [["cvu", "5330306232741698603292"], ["LIMIT", 1]]
+D, [2025-06-20T00:18:11.957571 #17] DEBUG -- :   Account Exists? (0.1ms)  SELECT 1 AS one FROM "accounts" WHERE "accounts"."alias" = ? LIMIT ?  [["alias", "vivo.pico.fallo"], ["LIMIT", 1]]
+D, [2025-06-20T00:18:11.958448 #17] DEBUG -- :   TRANSACTION (0.0ms)  BEGIN immediate TRANSACTION
+D, [2025-06-20T00:18:11.958686 #17] DEBUG -- :   User Load (0.3ms)  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?  [["id", 5], ["LIMIT", 1]]
+D, [2025-06-20T00:18:11.960104 #17] DEBUG -- :   Account Update (0.1ms)  UPDATE "accounts" SET "cvu" = ?, "alias" = ?, "updated_at" = ? WHERE "accounts"."id" = ?  [["cvu", "5330306232741698603292"], ["alias", "vivo.pico.fallo"], ["updated_at", "2025-06-20 00:18:11.959243"], ["id", 5]]
+D, [2025-06-20T00:18:11.960746 #17] DEBUG -- :   TRANSACTION (0.2ms)  COMMIT TRANSACTION
+Updated account for user: payaso2@yopmail.com
+D, [2025-06-20T00:18:11.961955 #17] DEBUG -- :   Account Exists? (0.2ms)  SELECT 1 AS one FROM "accounts" WHERE "accounts"."cvu" = ? LIMIT ?  [["cvu", "6402800037295871316059"], ["LIMIT", 1]]
+D, [2025-06-20T00:18:11.962590 #17] DEBUG -- :   Account Exists? (0.1ms)  SELECT 1 AS one FROM "accounts" WHERE "accounts"."alias" = ? LIMIT ?  [["alias", "terno.puerto.fallo"], ["LIMIT", 1]]
+D, [2025-06-20T00:18:11.963608 #17] DEBUG -- :   TRANSACTION (0.0ms)  BEGIN immediate TRANSACTION
+D, [2025-06-20T00:18:11.963844 #17] DEBUG -- :   User Load (0.3ms)  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?  [["id", 7], ["LIMIT", 1]]
+D, [2025-06-20T00:18:11.965365 #17] DEBUG -- :   Account Update (0.1ms)  UPDATE "accounts" SET "cvu" = ?, "alias" = ?, "updated_at" = ? WHERE "accounts"."id" = ?  [["cvu", "6402800037295871316059"], ["alias", "terno.puerto.fallo"], ["updated_at", "2025-06-20 00:18:11.964149"], ["id", 6]]
+D, [2025-06-20T00:18:11.965725 #17] DEBUG -- :   TRANSACTION (0.1ms)  COMMIT TRANSACTION
+Updated account for user: mago1@yopmail.com
+D, [2025-06-20T00:18:11.966441 #17] DEBUG -- :   Account Exists? (0.1ms)  SELECT 1 AS one FROM "accounts" WHERE "accounts"."cvu" = ? LIMIT ?  [["cvu", "5183123954522233144528"], ["LIMIT", 1]]
+D, [2025-06-20T00:18:11.966876 #17] DEBUG -- :   Account Exists? (0.1ms)  SELECT 1 AS one FROM "accounts" WHERE "accounts"."alias" = ? LIMIT ?  [["alias", "pico.german.hijos"], ["LIMIT", 1]]
+D, [2025-06-20T00:18:11.967471 #17] DEBUG -- :   TRANSACTION (0.0ms)  BEGIN immediate TRANSACTION
+D, [2025-06-20T00:18:11.971163 #17] DEBUG -- :   User Load (0.2ms)  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?  [["id", 8], ["LIMIT", 1]]
+D, [2025-06-20T00:18:11.972039 #17] DEBUG -- :   Account Update (0.1ms)  UPDATE "accounts" SET "cvu" = ?, "alias" = ?, "updated_at" = ? WHERE "accounts"."id" = ?  [["cvu", "5183123954522233144528"], ["alias", "pico.german.hijos"], ["updated_at", "2025-06-20 00:18:11.971464"], ["id", 7]]
+D, [2025-06-20T00:18:11.972335 #17] DEBUG -- :   TRANSACTION (0.1ms)  COMMIT TRANSACTION
+Updated account for user: makici8257@calorpg.com
+D, [2025-06-20T00:18:11.973034 #17] DEBUG -- :   Account Exists? (0.1ms)  SELECT 1 AS one FROM "accounts" WHERE "accounts"."cvu" = ? LIMIT ?  [["cvu", "8588303922066482463601"], ["LIMIT", 1]]
+D, [2025-06-20T00:18:11.973412 #17] DEBUG -- :   Account Exists? (0.1ms)  SELECT 1 AS one FROM "accounts" WHERE "accounts"."alias" = ? LIMIT ?  [["alias", "golpear.diente.crear"], ["LIMIT", 1]]
+D, [2025-06-20T00:18:11.974508 #17] DEBUG -- :   User Load (0.3ms)  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?  [["id", 9], ["LIMIT", 1]]
+D, [2025-06-20T00:18:11.975309 #17] DEBUG -- :   Account Update (0.1ms)  UPDATE "accounts" SET "cvu" = ?, "alias" = ?, "updated_at" = ? WHERE "accounts"."id" = ?  [["cvu", "8588303922066482463601"], ["alias", "golpear.diente.crear"], ["updated_at", "2025-06-20 00:18:11.974817"], ["id", 8]]
+D, [2025-06-20T00:18:11.975593 #17] DEBUG -- :   TRANSACTION (0.1ms)  COMMIT TRANSACTION
+Updated account for user: mago2@yopmail.com
+Done.
+=> nil

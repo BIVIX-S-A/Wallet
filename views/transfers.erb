@@ -26,7 +26,6 @@
                 <input type="hidden" name="credit_account_id" value="<%= @selected_contact_account.id %>">
             <% end %>
 
-
             <div class ="container-transfer">
                 <div id = "amount-input"> 
                     <label for="amount">Total</label>
@@ -45,19 +44,14 @@
                     <%= @user.name %> <%= @user.surname %> (You)
                 </div>
             </div>
-    
-          <div id="credit-contactBook" class="contact-book">
-                <label for="creditAccount-select">Credit Account</label> 
-                <% if @selected_contact_account %>
-                    <div class="selected-contact-name">
-                        <span class="contact-full-name"><%= @selected_contact_account.user.name %> <%= @selected_contact_account.user.surname %></span>
-                        <a href="/select-contact" class="change-link">(Change)</a>
-                    </div>
-                <% else %>
-                    <a href="/select-contact" class="button-link">Select</a>
-                <% end %>
+              
+            <div id="credit-contactBook" class="contact-book">
+                <label for="recipient_identifier">Credit Account</label>
+                <div class="recipient-input-container">
+                    <input type="text" id="recipient_identifier" name="recipient_identifier" class="recipient-input" placeholder="Enter Alias or CVU" value="<%= @selected_alias %>" required>
+                    <a href="/select-contact" class="change-link">Choose Contact</a>
+                </div>
             </div>
-
 
              <div id="category-transfer" class="category-transfers">
                 <label for="category-select">Category</label>

@@ -1071,3 +1071,18 @@ label {
         border: none;
     }
 }
+
+.recipient-input-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-grow: 1;
+}
+
+.recipient-input {
+    flex-grow: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}

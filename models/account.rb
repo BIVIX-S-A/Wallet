@@ -13,6 +13,8 @@ class Account < ActiveRecord::Base
   has_many :entries_where_i_am_the_contact, class_name:  'Contact', foreign_key: :contact_account_id 
   has_many :accounts_that_saved_this, through: :entries_where_i_am_the_contact, source: :owner_account
 
+  before_validation :generate_cvu_and_alias, on: :create
+
   validates :balance, presence: true, numericality: { greater_than_or_equal_to: 0 }, allow_nil: false
   validate :check_user_presence
 

@@ -66,18 +66,11 @@ class App < Sinatra::Application
     @user = User.find(session[:user_id])
 
     if params[:contact_id]
-
-      contact = Contact.find_by(contact_account_id: params[:contact_id],owner_account_id: @user.account.id)
-      #Security
-      if contact
-        @selected_contact_account = contact.contact_account
-      else
-        @selected_contact_account = nil 
-      end
+      contact_account = Account.find_by(id: params[:contact_id])
+      @selected_alias = contact_account.alias if contact_account
     end
-    
-    erb :'transfers', layout: true
 
+    erb :'transfers', layout: true
   end
 
   get '/register' do
@@ -230,36 +223,48 @@ class App < Sinatra::Application
     halt(redirect('/login')) unless session[:user_id]
     @user = User.find(session[:user_id])
 
-    #Get parameters from the form
-    amount = params[:amount].to_f
-    debit_account_id = params[:debit_account_id].to_i
-    credit_account_id = params[:credit_account_id].to_i
-    category = params[:category]
-
-    # Critical validations
-    halt(403, "Forbidden: You can only transfer from your own account.") unless @user.account.id == debit_account_id
-    halt(400, "Invalid amount.") unless amount > 0
-    halt(400, "No recipient selected.") unless credit_account_id > 0
-
-    debit_account = Account.find(debit_account_id)
-    credit_account = Account.find(credit_account_id)
-
     begin
-        Transaction.create!(
-          source_account_id: debit_account.id,
-          target_account_id: credit_account.id,
-          amount: amount,
-          category: category,
-          description: "Transfer from #{debit_account.user.name} to #{credit_account.user.name}"
-        )
-    
-    rescue => e
-      @error = "Transaction failed: #{e.message}"
-      @selected_contact_account = credit_account
+      @amount = BigDecimal(params[:amount])
+    rescue ArgumentError
+      @error = "Invalid amount format."
       return erb :'transfers', layout: true
     end
-    
-    erb :'transfer-success', layout: false
+
+    debit_account_id = params[:debit_account_id].to_i
+    @selected_alias = params[:recipient_identifier].to_s.strip
+    @category = params[:category]
+
+    halt(403, "Forbidden.") unless @user.account.id == debit_account_id
+    halt(400, "Invalid amount.") unless @amount > 0
+    halt(400, "No recipient entered.") if @selected_alias.empty?
+
+    debit_account = @user.account
+    credit_account = Account.find_by(alias: @selected_alias) || Account.find_by(cvu: @selected_alias)
+
+    unless credit_account
+      @error = "Recipient account not found. Please check the Alias or CVU."
+      return erb :'transfers', layout: true
+    end
+
+    begin
+      description = "Transfer from #{debit_account.user.name} to #{credit_account.user.name}"
+      Transaction.create_transfer(
+        source_account: debit_account,
+        target_account: credit_account,
+        amount: @amount,
+        category: @category,
+        description: description
+      )
+
+      erb :'transfer-success', layout: false
+
+    rescue ActiveRecord::RecordInvalid => e
+      @error = e.message
+      erb :'transfers', layout: true 
+    rescue => e
+      @error = "An unexpected error occurred. Please try again."
+      erb :'transfers', layout: true
+    end
   end
 
   get '/add-contact' do
