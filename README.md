@@ -58,14 +58,31 @@ If you don't have docker installed yet check the [Docker Installation Guide](htt
 
 - Clone this repository
 
-- Change the example.env file with your configuration
+- Copy the example.env file into a new .env file
+```bash
+cp example.env .env
+```
+
+- Change the .env file with your configuration
+```.env
+SESSION_SECRET=secret_password        // your password
+SMTP_ADDRESS=mail.smtp.address        // the smtp address of your email service 
+SMTP_PORT=587                        
+SMTP_USER=you@email.com               // your email
+SMTP_PASS=password_here               // your application password
+SMTP_DOMAIN=email.domain              // the domain of your email service
+SMTP_FROM=you@email.com               // the email that signs the email
+VERIFICATION_CODE_EXPIRY=600
+VERIFICATION_CODE_LENGTH=6
+```
+We use [dotenv](https://github.com/bkeepers/dotenv) to load enviroment variables
 
 - In views/charge-link.erb change the response
 ```javascript
 const response = await fetch('https://api.tinyurl.com/create', {
         method: 'POST',
         headers: {
-          'Authorization': 'Bearer API_KEY_HERE', //put ypur api key instead of API_KEY_HERE
+          'Authorization': 'Bearer API_KEY_HERE', //put your api key instead of API_KEY_HERE
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({ url: longUrl })
