@@ -175,6 +175,11 @@ class App < Sinatra::Application
 
   get '/card' do
     halt(redirect('/login')) unless session[:user_id]
+      @user = User.find(session[:user_id])
+
+      @card = @user.account.card
+      halt(redirect('/dashboard')) unless @card
+
     erb :'card', layout: true
   end
 

@@ -14,6 +14,7 @@ class Account < ActiveRecord::Base
   has_many :accounts_that_saved_this, through: :entries_where_i_am_the_contact, source: :owner_account
 
   before_validation :generate_cvu_and_alias, on: :create
+  after_create :generate_card
 
   validates :balance, presence: true, numericality: { greater_than_or_equal_to: 0 }, allow_nil: false
   validate :check_user_presence
@@ -47,4 +48,27 @@ class Account < ActiveRecord::Base
       break unless Account.exists?(alias: self.alias)
     end
   end
+
+  def generate_card
+    card_number = ""
+    16.times do
+      card_number << rand(0..9).to_s
+    end
+
+    cvv_code = rand(100..999).to_s
+
+    expiration_date = Date.today + (5 * 365)
+
+    Card.create!(
+      account: self,
+      number: card_number,
+      cvv: cvv_code,
+      issue_date: Date.today,
+      expiry_date: expiration_date,
+      payment_system: 0, 
+      card_type: 1       
+    )
+  end
+
+
 end
