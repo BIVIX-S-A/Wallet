@@ -1226,3 +1226,32 @@ li:hover {
     font-size: 1.2rem;
   }
 }
+
+.profile-logout {
+    display: flex;
+    justify-content: center;
+    margin: 0rem 0 1rem 0;
+}
+
+#profile-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #ff4d4f;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 12px 32px;
+    border-radius: 10px;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(255,77,79,0.08);
+    border: none;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+#profile-link:hover {
+    background: #d9363e;
+    color: #fff;
+    text-decoration: none;
+    box-shadow: 0 4px 16px rgba(255,77,79,0.15);
+}

@@ -297,4 +297,11 @@ class App < Sinatra::Application
     end
   end
 
+  get '/profile' do
+    halt(redirect('/login')) unless session[:user_id]
+    @user = User.find(session[:user_id])
+    @account = @user.account
+    erb :'profile', layout: true
+  end
+
 end

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>User Profile</title>
+</head>
+
+<body>
+    <header class="page-header">
+        <a href="/dashboard" class="header-button back-button">
+            &larr; Home <%# &larr is a arrow %>
+        </a>
+        <h3 id="transfers-title">Profile</h3>
+    </header>
+    <main class="content">    
+        <div>
+            <p>Welcome, <%= @user.name %> <%= @user.surname %>!</p>
+            <p>Email: <%= @user.email %></p>
+            <p>Joined on: <%= @user.created_at.strftime("%B %d, %Y") %></p>
+            <p>DNI: <%= @user.dni %></p>
+            <p>Birth date: <%= @user.birth_date %> </p>
+            <p>Phone: <%= @user.phone%> </p>
+            <p>Address: <%= @user.address%> </p>
+            <p>Marital status: <%= @user.marital_status%> </p>
+            <p>Legal entity: <%= @user.legal_entity%> </p>
+            <p>CVU: <%= @account.cvu%> </p>
+            <p>Alias: <%= @account.alias%> </p>
+        </div>
+    </main>
+    <div class="profile-logout">
+        <a href="/logout" id="profile-link">Logout</a>
+    </div>
+</body>
+
+</html>
