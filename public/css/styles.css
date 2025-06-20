@@ -1312,3 +1312,31 @@ li:hover {
 .card-details div {
     font-size: 1rem;
 }
+
+#generate-link, input[type="button"]  {
+    display: block;
+    width: 100%;
+    max-width: 360px;
+    box-sizing: border-box;
+    padding: 14px 16px; 
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 10px auto 0; 
+    border: none;
+    text-align: center;
+    text-decoration: none; 
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+
+    background: #8376f5;
+    color: #222;
+}
+
+#generate-link:hover, input[type="button"]:hover {
+    background: #d6d6d6;
+}
+
+#short-link {
+    margin-top: 1rem;
+}
