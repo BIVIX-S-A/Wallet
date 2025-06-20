@@ -34,7 +34,8 @@ password: 123456
 email: mago1@yopmail.com
 password: 123456
 
-
+email: payaso5@yopmail.com (with card)
+password : 123456 
 
 irb(main):010:-> puts "Done."
 D, [2025-06-20T00:18:11.906863 #17] DEBUG -- :   Account Load (0.3ms)  SELECT "accounts".* FROM "accounts" WHERE "accounts"."alias" IS NULL ORDER BY "accounts"."id" ASC LIMIT ?  [["LIMIT", 1000]]
