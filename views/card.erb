@@ -4,6 +4,34 @@
     <title>Card</title>
 </head>
 <body>
-    
+    <div class="card-view-container">
+    <header class="page-header">
+        <a href="/dashboard" class="header-button back-button">
+           &larr; Home
+        </a>
+        <h3 id="transfers-title">MY CARD</h3>
+    </header>
+
+    <div class="card-container">
+        <div class="card-face">
+            <div class="card-chip"></div>
+            <div class="card-logo">
+            </div>
+            <div class="card-number">
+                <%= @card.number.scan(/.{4}/).join(' ') %>
+            </div>
+            <div class="card-details">
+                <div class="card-holder">
+                    <span>Card Holder</span>
+                    <div><%= @user.name.to_s.upcase %></div>
+                </div>
+                <div class="card-expiry">
+                    <span>Expires</span>
+                    <div><%= @card.expiry_date.strftime('%m/%y') %></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
