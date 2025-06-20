@@ -852,6 +852,9 @@ input[type="submit"]:hover, #login-submit:hover, #transfer-submit:hover {
     padding: 0;
     max-height: 300px;
     overflow-y: auto;
+    padding-bottom: 90px;
+    box-sizing: border-box;
+
 }
 
 .transactions li {
