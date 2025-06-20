@@ -99,7 +99,7 @@ class App < Sinatra::Application
   end
 
   get '/register/verify' do
-    erb :'code_verification', layout: :'layout'
+    erb :'code_verification', layout: true
   end
 
   post '/register/verify' do
@@ -114,7 +114,7 @@ class App < Sinatra::Application
       redirect '/registration-final'
     else
       @error = "Invalid or expired verification code."
-      erb :'code_verification', layout: :'layout'
+      erb :'code_verification', layout: true
     end
   end
 
@@ -135,8 +135,8 @@ class App < Sinatra::Application
       phone: params[:phone],
       address: params[:address],
       password: params[:password],
-      marital_status: params[:marital_status]&.to_i,
-      legal_entity: params[:legal_entity] == 'true'
+      marital_status: params[:marital_status],
+      legal_entity: params[:legal_entity]
     )
     
     if user.errors.empty?

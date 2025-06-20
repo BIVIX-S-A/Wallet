@@ -1,10 +1,24 @@
-<form action="/register/verify" method="post">
-  <input type="text" name="verification_code" placeholder="Enter verification code" required>
-  <input type="submit" value="Verify Code">
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Verify your email</title>
+</head>
+<body>
 
-<% if @error %>
-  <p style="color: red;"><%= @error %></p>
-<% end %>
+  <form action="/register/verify" method="post">
+    <input type="text" name="verification_code" placeholder="Enter verification code" required>
+    <input type="submit" id="login-submit" value="Verify Code">
+  </form>
 
-<p>If you didn't receive the code, <a href="/register">click here to resend.</a></p>
+  <% if @error %>
+    <p style="color: red;"><%= @error %></p>
+  <% end %>
+
+  <p>If you didn't receive the code, <a href="/register">click here to resend.</a></p>
+
+</body>
+</html>
+
+
+
+

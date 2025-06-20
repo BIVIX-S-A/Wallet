@@ -207,6 +207,80 @@ input[type="submit"]:hover, #login-submit:hover, #transfer-submit:hover {
     margin: 0 10px;
 }
 
+#verify-code, input[type="button"]  {
+    display: block;
+    width: 100%;
+    max-width: 360px;
+    box-sizing: border-box;
+    padding: 14px 16px; 
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 10px auto 0; 
+    border: none;
+    text-align: center;
+    text-decoration: none; 
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+
+    background: #8376f5;
+    color: #222;
+}
+
+#verify-code:hover, input[type="button"]:hover {
+    background: #d6d6d6;
+}
+ 
+
+#complete-registration, input[type="button"]  {
+    display: block;
+    width: 100%;
+    max-width: 360px;
+    box-sizing: border-box;
+    padding: 14px 16px; 
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 10px auto 0; 
+    border: none;
+    text-align: center;
+    text-decoration: none; 
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+
+    background: #8376f5;
+    color: #222;
+}
+
+#complete-registration:hover, input[type="button"]:hover {
+    background: #d6d6d6;
+}
+
+/* Registration form */
+#user-info-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 18px;
+    margin-bottom: 10px;
+}
+
+.radio-group label {
+    font-size: 0.98rem;
+    color: #333;
+    font-weight: 400;
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+ 
+
  /*Transfers Menu Style*/
 .page-header {
     display: flex;
@@ -518,7 +592,7 @@ input[type="submit"]:hover, #login-submit:hover, #transfer-submit:hover {
     width: 100px;
     height: auto;
     opacity: 0;
-    animation: fadeInLogo 2s ease-in forwards;
+    animation: fadeInLogo 0.5s ease-in forwards;
     animation-delay: 0.5s;
 }
 

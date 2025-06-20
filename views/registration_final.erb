@@ -1,15 +1,57 @@
-<h1>Final Registration</h1>
-<form id="registration-form" action="/register/complete" method="post">
-    <div id="user-info-container">
-        <h2>User Information</h2>
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Registration form</title>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Final Registration</h1>
+        <form id="registration-form" action="/register/complete" method="post">
+            <div id="user-info-container">
+                <h2>User Information</h2>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
+                <label for="surname">Surname:</label>
+                <input type="text" id="surname" name="surname" required>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
 
-        <button type="submit">Complete Registration</button>
+                <label for="dni">DNI:</label>
+                <input type="text" id="dni" name="dni" required>
+
+                <label for="phone">Phone:</label>
+                <input type="text" id="phone" name="phone" required>
+
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address" required>
+        
+                <label for="marital_status">Marital Status:</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="marital_status" value="Single"> Single</label>
+                    <label><input type="radio" name="marital_status" value="Married"> Married</label>
+                    <label><input type="radio" name="marital_status" value="Divorced"> Divorced</label>
+                    <label><input type="radio" name="marital_status" value="Widowed"> Widowed</label>
+                    <label><input type="radio" name="marital_status" value="Cohabitating"> Cohabitating</label>
+                    <label><input type="radio" name="marital_status" value="Separated"> Separated</label>
+                </div>
+
+                <label for="legal_entity">Legal Entity:</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="legal_entity" value="Individual"> Individual</label>
+                    <label><input type="radio" name="legal_entity" value="Limited Liability Company"> Limited Liability Company</label>
+                    <label><input type="radio" name="legal_entity" value="Corporation"> Corporation</label>
+                    <label><input type="radio" name="legal_entity" value="Sole Proprietor"> Sole Proprietor</label>
+                    <label><input type="radio" name="legal_entity" value="Nonprofit Association"> Nonprofit Association</label>
+                </div>
+
+                <button type="submit" id="login-submit">Complete Registration</button>
+            </div>
+        </form>
     </div>
+</body>
+</html>
+
+
+
