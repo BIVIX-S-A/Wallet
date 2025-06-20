@@ -131,7 +131,7 @@ class App < Sinatra::Application
       name: params[:name],
       surname: params[:surname],
       dni: params[:dni],
-      birth_date: params[:birth_date],
+      birth_date: params[:birthdate],
       phone: params[:phone],
       address: params[:address],
       password: params[:password],
