@@ -1276,7 +1276,7 @@ li:hover {
     height: 100%;
     background: linear-gradient(45deg, #8C82CA, #A294F9);
     border-radius: 15px;
-    color: white;
+    color: black;
     padding: 25px;
     box-sizing: border-box;
     display: flex;
